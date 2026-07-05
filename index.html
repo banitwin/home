@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* ===== All existing styles remain unchanged ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
@@ -90,6 +90,34 @@
         .market-item { background: #fff; padding: 20px 32px; border-radius: 60px; display: flex; align-items: center; gap: 16px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
         .market-item i { font-size: 32px; color: #1a3a5c; }
 
+        /* ===== Swiper Custom ===== */
+        .swiper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+        }
+        .swiper-slide img {
+            width: 100%;
+            display: block;
+        }
+        .swiper-slide .slide-caption {
+            background: #0b1a33;
+            color: #fff;
+            padding: 16px 24px;
+            text-align: center;
+        }
+        .swiper-slide .slide-caption h4 {
+            margin: 0;
+        }
+        .swiper-pagination {
+            position: relative !important;
+            margin-top: 12px;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #38bdf8 !important;
+        }
+
         .footer { background: #0b1a33; color: #cbd5e1; padding: 32px 0; text-align: center; border-top: 4px solid #38bdf8; }
         .footer a { color: #38bdf8; text-decoration: none; }
 
@@ -156,6 +184,40 @@
         </div>
     </div>
 </header>
+
+<!-- ===== SLIDESHOW ===== -->
+<section style="padding: 40px 0; background: #f8fafc;">
+    <div class="container">
+        <h2 class="section-title" style="text-align:center;">How It Works</h2>
+        <p class="section-sub" style="text-align:center;">A visual journey through our PINN‑based digital twin system</p>
+
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="slide-monitoring.jpg" alt="Smart Monitoring" />
+                    <div class="slide-caption">
+                        <h4>1. Smart Monitoring – Real‑time equipment surveillance</h4>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="slide-energy.jpg" alt="Energy Optimization" />
+                    <div class="slide-caption">
+                        <h4>2. Energy Optimization – Reduce consumption, increase efficiency</h4>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="slide-predictive.jpg" alt="Predictive Maintenance" />
+                    <div class="slide-caption">
+                        <h4>3. Predictive Maintenance – Prevent failures before they happen</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
 
 <!-- ===== PROBLEM & SOLUTION ===== -->
 <section class="problem-solution">
@@ -266,9 +328,29 @@
     </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
+    // ===== SWIPER =====
+    var swiper = new Swiper('.mySwiper', {
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        effect: 'slide',
+    });
+
+    // ===== CHARTS =====
     document.addEventListener('DOMContentLoaded', function () {
-        // ===== Customer Growth Chart =====
         const ctx1 = document.getElementById('customerChart').getContext('2d');
         new Chart(ctx1, {
             type: 'bar',
@@ -288,7 +370,6 @@
             }
         });
 
-        // ===== Revenue Growth Chart =====
         const ctx2 = document.getElementById('revenueChart').getContext('2d');
         new Chart(ctx2, {
             type: 'line',
