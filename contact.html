@@ -47,59 +47,134 @@
         .hero p { font-size: 18px; color: #dbeafe; max-width: 700px; margin-top: 12px; }
 
         section { padding: 56px 0; }
-        .section-title { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
-        .section-sub { color: #475569; font-size: 17px; margin-bottom: 32px; }
 
         .contact-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 48px;
-            align-items: start;
+            align-items: stretch; /* هم‌تراز کردن ارتفاع دو ستون */
         }
 
+        /* ===== LEFT: Contact Info (New Design) ===== */
         .contact-info {
             background: #fff;
-            padding: 32px;
+            padding: 40px 32px;
             border-radius: 20px;
             border: 1px solid #e9edf2;
             box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .contact-info h4 {
-            font-size: 20px;
-            font-weight: 700;
+        .contact-info .icon-large {
+            font-size: 40px;
+            color: #38bdf8;
             margin-bottom: 16px;
         }
-        .contact-info .item {
+        .contact-info h2 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0b1a33;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .contact-info h2 span {
+            color: #38bdf8;
+        }
+        .contact-info .description {
+            color: #475569;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            max-width: 90%;
+        }
+        .contact-info .divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+            border-radius: 4px;
+            margin-bottom: 24px;
+        }
+        .contact-info .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .contact-info .contact-methods .method {
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 12px 0;
-            border-bottom: 1px solid #f1f5f9;
+            gap: 14px;
+            padding: 12px 16px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #f1f5f9;
+            transition: 0.2s;
+            text-decoration: none;
+            color: #0b1a33;
         }
-        .contact-info .item:last-child { border-bottom: none; }
-        .contact-info .item i {
+        .contact-info .contact-methods .method:hover {
+            background: #f1f5f9;
+            border-color: #38bdf8;
+            transform: translateX(4px);
+        }
+        .contact-info .contact-methods .method i {
             font-size: 20px;
-            color: #38bdf8;
             width: 36px;
             text-align: center;
+            color: #38bdf8;
         }
-        .contact-info .item .label { font-weight: 600; color: #0b1a33; }
-        .contact-info .item .value { color: #475569; }
+        .contact-info .contact-methods .method .info {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-info .contact-methods .method .info .label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .contact-info .contact-methods .method .info .value {
+            font-size: 15px;
+            font-weight: 500;
+            color: #0b1a33;
+        }
+        .contact-info .response-badge {
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #e0f2fe;
+            color: #075985;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            align-self: flex-start;
+        }
+        .contact-info .response-badge i {
+            font-size: 16px;
+        }
 
+        /* ===== RIGHT: Contact Form ===== */
         .contact-form {
             background: #fff;
-            padding: 32px;
+            padding: 40px 32px;
             border-radius: 20px;
             border: 1px solid #e9edf2;
             box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
         }
         .contact-form h4 {
             font-size: 20px;
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+            color: #0b1a33;
         }
         .contact-form h4 i {
             color: #38bdf8;
+            margin-right: 8px;
         }
         .contact-form label {
             display: block;
@@ -147,6 +222,7 @@
             justify-content: center;
             gap: 10px;
             box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+            margin-top: auto;
         }
         .contact-form .btn-submit:hover {
             transform: scale(1.02);
@@ -247,8 +323,8 @@
         @media (max-width: 768px) {
             .navbar { flex-direction: column; align-items: flex-start; }
             .hero h1 { font-size: 28px; }
-            .section-title { font-size: 24px; }
-            .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
+            .contact-wrapper { grid-template-columns: 1fr; gap: 32px; align-items: stretch; }
+            .contact-info .description { max-width: 100%; }
             .cta-section .btn-group { flex-direction: column; align-items: center; }
             .cta-section .btn { width: 100%; justify-content: center; }
         }
@@ -258,6 +334,7 @@
             .contact-form { padding: 24px; }
             .contact-form input,
             .contact-form textarea { font-size: 14px; padding: 10px 14px; }
+            .contact-info .contact-methods .method .info .value { font-size: 14px; }
         }
     </style>
 </head>
@@ -287,43 +364,32 @@
 <section>
     <div class="container">
         <div class="contact-wrapper">
-            <!-- ===== LEFT: Contact Info ===== -->
+            <!-- ===== LEFT: New Contact Info ===== -->
             <div class="contact-info">
-                <h4><i class="fas fa-address-card" style="color:#38bdf8;"></i> Contact Information</h4>
-                <div class="item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <div class="label">Email</div>
-                        <div class="value">info@banitwin.com</div>
-                    </div>
+                <div class="icon-large">
+                    <i class="fas fa-comment-dots"></i>
                 </div>
-                <div class="item">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <div class="label">Phone</div>
-                        <div class="value">+98 913 114 2199</div>
-                    </div>
-                </div>
-                <div class="item">
-                    <i class="fab fa-linkedin"></i>
-                    <div>
-                        <div class="label">LinkedIn</div>
-                        <div class="value">linkedin.com/company/banitwin</div>
-                    </div>
-                </div>
-                <div class="item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <div class="label">Location</div>
-                        <div class="value">Tehran, Iran / Global</div>
-                    </div>
+                <h2>Let's <span>Connect</span></h2>
+                <div class="divider"></div>
+                <p class="description">
+                    Have questions about how BaniTwin can optimize your industrial operations?
+                    We're here to help. Reach out through the form or connect with us directly on WhatsApp.
+                </p>
+
+                <div class="contact-methods">
+                    <a href="https://wa.me/989131142199?text=Hello!%20I%20visited%20BaniTwin%20website%20and%20I%27m%20interested%20in%20a%20consultation." target="_blank" class="method">
+                        <i class="fab fa-whatsapp"></i>
+                        <div class="info">
+                            <span class="label">WhatsApp Business</span>
+                            <span class="value">+98 913 114 2199</span>
+                        </div>
+                        <i class="fas fa-arrow-right" style="margin-left:auto; color:#94a3b8; font-size:14px;"></i>
+                    </a>
                 </div>
 
-                <div style="margin-top:24px; background:#f1f5f9; padding:16px; border-radius:12px;">
-                    <p style="font-size:14px; color:#475569;">
-                        <i class="fas fa-clock" style="color:#38bdf8;"></i>
-                        <strong>Response Time:</strong> We typically respond within 24 hours.
-                    </p>
+                <div class="response-badge">
+                    <i class="fas fa-clock"></i>
+                    Response within 24 hours
                 </div>
             </div>
 
@@ -360,7 +426,11 @@
     <div class="container">
         <h3>Ready to transform your operations?</h3>
         <p>Whether you're a plant manager, engineer, or investor — we're here to discuss how BaniTwin can help you achieve operational excellence.</p>
-
+        <div class="btn-group">
+            <a href="https://wa.me/989131142199?text=Hello!%20I%20visited%20BaniTwin%20website%20and%20I%27m%20interested%20in%20a%20consultation." target="_blank" class="btn btn-secondary">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
     </div>
 </section>
 
@@ -369,7 +439,6 @@
     <div class="container">
         <p><i class="fas fa-bolt" style="color:#38bdf8;"></i> BaniTwin — PINN‑based Digital Twin for Energy-Intensive Industries</p>
         <p style="font-size:14px; margin-top:4px;">© 2026 · BaniTwin · All rights reserved</p>
-        <p style="font-size:12px; opacity:0.7;">Contact: <a href="mailto:info@banitwin.com">info@banitwin.com</a></p>
     </div>
 </footer>
 
@@ -383,12 +452,11 @@
         // ============================================================
         //  YOUR EMAILJS CONFIGURATION
         // ============================================================
-        const PUBLIC_KEY  = 'ibv3e8dFj5F9PQtvZ';   // <- Your Public Key
-        const SERVICE_ID  = 'service_g9ke6aj';    // <- Your Service ID
-        const TEMPLATE_ID = 'template_cpsxo6k';   // <- Your Template ID
+        const PUBLIC_KEY  = 'ibv3e8dFj5F9PQtvZ';
+        const SERVICE_ID  = 'service_g9ke6aj';
+        const TEMPLATE_ID = 'template_cpsxo6k';
         // ============================================================
 
-        // Initialize EmailJS with your Public Key
         emailjs.init({
             publicKey: PUBLIC_KEY,
         });
@@ -397,7 +465,6 @@
         const statusDiv = document.getElementById('formStatus');
         const submitBtn = document.getElementById('submitBtn');
 
-        // Helper to show status messages
         function showStatus(message, type) {
             statusDiv.textContent = message;
             statusDiv.className = 'form-status show ' + type;
@@ -408,7 +475,6 @@
             statusDiv.textContent = '';
         }
 
-        // Helper to reset button state
         function setButtonLoading(isLoading) {
             if (isLoading) {
                 submitBtn.disabled = true;
@@ -419,26 +485,20 @@
             }
         }
 
-        // Handle form submission
         form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default page reload
-
-            // Hide any previous status
+            event.preventDefault();
             hideStatus();
 
-            // Get form values
             const name = document.getElementById('from_name').value.trim();
             const email = document.getElementById('from_email').value.trim();
             const company = document.getElementById('company').value.trim();
             const message = document.getElementById('message').value.trim();
 
-            // Basic validation
             if (!name || !email || !message) {
                 showStatus('❌ Please fill in all required fields.', 'error');
                 return;
             }
 
-            // Prepare template parameters
             const templateParams = {
                 from_name: name,
                 from_email: email,
@@ -446,21 +506,19 @@
                 message: message,
             };
 
-            // Show loading state
             setButtonLoading(true);
             showStatus('⏳ Sending your message...', 'loading');
 
-            // Send email via EmailJS
             emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
                 .then(function(response) {
                     console.log('✅ Email sent successfully!', response);
                     showStatus('✅ Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
-                    form.reset(); // Clear the form
+                    form.reset();
                     setButtonLoading(false);
                 })
                 .catch(function(error) {
                     console.error('❌ Failed to send email:', error);
-                    showStatus('❌ Oops! Something went wrong. Please try again later, or email us directly at info@banitwin.com.', 'error');
+                    showStatus('❌ Oops! Something went wrong. Please try again later.', 'error');
                     setButtonLoading(false);
                 });
         });
