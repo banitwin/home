@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact – BaniTwin PINN Digital Twin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.7; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        .navbar {
+            background: #0b1a33;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 3px solid #38bdf8;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .navbar .logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+        .navbar .logo i { color: #38bdf8; margin-right: 6px; }
+        .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
+        .nav-links a { color: #cbd5e1; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.2s; }
+        .nav-links a:hover { color: #38bdf8; }
+        .nav-links a.active { color: #38bdf8; border-bottom: 2px solid #38bdf8; padding-bottom: 4px; }
+
+        .hero {
+            background: linear-gradient(145deg, #0b1a33 0%, #1a3a5c 100%);
+            color: #fff;
+            padding: 120px 0 48px;
+        }
+        .hero h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.02em; }
+        .hero h1 span { color: #38bdf8; }
+        .hero p { font-size: 18px; color: #dbeafe; max-width: 700px; margin-top: 12px; }
+
+        section { padding: 56px 0; }
+        .section-title { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+        .section-sub { color: #475569; font-size: 17px; margin-bottom: 32px; }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: #fff;
+            padding: 32px;
+            border-radius: 20px;
+            border: 1px solid #e9edf2;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+        }
+        .contact-info h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .contact-info .item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .contact-info .item:last-child { border-bottom: none; }
+        .contact-info .item i {
+            font-size: 20px;
+            color: #38bdf8;
+            width: 36px;
+            text-align: center;
+        }
+        .contact-info .item .label { font-weight: 600; color: #0b1a33; }
+        .contact-info .item .value { color: #475569; }
+
+        .contact-form {
+            background: #fff;
+            padding: 32px;
+            border-radius: 20px;
+            border: 1px solid #e9edf2;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+        }
+        .contact-form label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: 14px;
+            color: #0b1a33;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: 0.2s;
+            margin-bottom: 16px;
+            background: #f8fafc;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+            background: #fff;
+        }
+        .contact-form .btn-submit {
+            background: #0b1a33;
+            color: #fff;
+            font-weight: 600;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 40px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+        }
+        .contact-form .btn-submit:hover {
+            background: #38bdf8;
+            color: #0b1a33;
+            transform: scale(1.02);
+        }
+
+        .cta-section {
+            background: #f1f5f9;
+            padding: 48px 0;
+            text-align: center;
+            margin-top: 24px;
+        }
+        .cta-section h3 { font-size: 24px; font-weight: 700; }
+        .cta-section p { color: #334155; max-width: 600px; margin: 8px auto 16px; }
+
+        .footer { background: #0b1a33; color: #cbd5e1; padding: 28px 0; text-align: center; border-top: 4px solid #38bdf8; }
+        .footer a { color: #38bdf8; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; align-items: flex-start; }
+            .hero h1 { font-size: 28px; }
+            .section-title { font-size: 24px; }
+            .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+    <div class="logo"><i class="fas fa-bolt"></i> BaniTwin</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="technology.html">Technology</a>
+        <a href="benefits.html">Benefits</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html" class="active">Contact</a>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+    <div class="container">
+        <h1>Get in <span>Touch</span></h1>
+        <p>Interested in deploying a PINN-based digital twin for your facility? Let's talk.</p>
+    </div>
+</header>
+
+<!-- ===== CONTACT ===== -->
+<section>
+    <div class="container">
+        <div class="contact-wrapper">
+            <!-- ===== LEFT: Contact Info ===== -->
+            <div class="contact-info">
+                <h4><i class="fas fa-address-card" style="color:#38bdf8;"></i> Contact Information</h4>
+                <div class="item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <div class="label">Email</div>
+                        <div class="value">info@banitwin.com</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <div class="label">Phone</div>
+                        <div class="value">+98 913 114 2199</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="fab fa-linkedin"></i>
+                    <div>
+                        <div class="label">LinkedIn</div>
+                        <div class="value">linkedin.com/company/banitwin</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <div class="label">Location</div>
+                        <div class="value">Tehran, Iran / Global</div>
+                    </div>
+                </div>
+
+                <div style="margin-top:24px; background:#f1f5f9; padding:16px; border-radius:12px;">
+                    <p style="font-size:14px; color:#475569;">
+                        <i class="fas fa-clock" style="color:#38bdf8;"></i>
+                        <strong>Response Time:</strong> We typically respond within 24 hours.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ===== RIGHT: Contact Form ===== -->
+            <div class="contact-form">
+                <h4 style="margin-bottom:16px;"><i class="fas fa-paper-plane" style="color:#38bdf8;"></i> Send a Message</h4>
+                <form id="contactForm">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Your name" required />
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="you@example.com" required />
+
+                    <label for="company">Company / Organization</label>
+                    <input type="text" id="company" placeholder="Your company name" />
+
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="4" placeholder="How can we help you?" required></textarea>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+                <div id="formMessage" style="margin-top:12px; font-weight:500; text-align:center;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<section class="cta-section">
+    <div class="container">
+        <h3>Ready to transform your operations?</h3>
+        <p>Whether you're a plant manager, engineer, or investor — we're here to discuss how BaniTwin can help you achieve operational excellence.</p>
+        <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-top:16px;">
+            <a href="mailto:info@banitwin.com" class="btn" style="background:#0b1a33; color:#fff; padding:12px 32px; border-radius:40px; text-decoration:none; font-weight:600; display:inline-block; transition:0.2s;">
+                <i class="fas fa-envelope"></i> Email Us Directly
+            </a>
+            <a href="https://linkedin.com/company/banitwin" target="_blank" class="btn" style="background:#38bdf8; color:#0b1a33; padding:12px 32px; border-radius:40px; text-decoration:none; font-weight:600; display:inline-block; transition:0.2s;">
+                <i class="fab fa-linkedin"></i> Follow on LinkedIn
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="container">
+        <p><i class="fas fa-bolt" style="color:#38bdf8;"></i> BaniTwin — PINN‑based Digital Twin for Energy-Intensive Industries</p>
+        <p style="font-size:14px; margin-top:4px;">© 2026 · BaniTwin · All rights reserved</p>
+        <p style="font-size:12px; opacity:0.7;">Contact: <a href="mailto:info@banitwin.com">info@banitwin.com</a></p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = this.querySelector('.btn-submit');
+        const msg = document.getElementById('formMessage');
+
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        msg.textContent = '';
+
+        const data = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            company: document.getElementById('company').value,
+            message: document.getElementById('message').value
+        };
+
+        // ===== Replace with actual form handling URL =====
+        const endpoint = 'https://banitwin-contact.safaparsco.workers.dev';
+
+        fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(result => {
+            if (result.success) {
+                msg.style.color = '#22c55e';
+                msg.textContent = '✅ Message sent successfully! We\'ll get back to you soon.';
+                this.reset();
+            } else {
+                msg.style.color = '#ef4444';
+                msg.textContent = '❌ ' + (result.error || 'Something went wrong. Please try again.');
+            }
+        })
+        .catch(() => {
+            msg.style.color = '#ef4444';
+            msg.textContent = '❌ Network error. Please try again or email us directly.';
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        });
+    });
+</script>
+
+</body>
+</html>

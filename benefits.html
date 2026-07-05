@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benefits – BaniTwin PINN Digital Twin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.7; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        .navbar {
+            background: #0b1a33;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 3px solid #38bdf8;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .navbar .logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+        .navbar .logo i { color: #38bdf8; margin-right: 6px; }
+        .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
+        .nav-links a { color: #cbd5e1; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.2s; }
+        .nav-links a:hover { color: #38bdf8; }
+        .nav-links a.active { color: #38bdf8; border-bottom: 2px solid #38bdf8; padding-bottom: 4px; }
+
+        .hero {
+            background: linear-gradient(145deg, #0b1a33 0%, #1a3a5c 100%);
+            color: #fff;
+            padding: 120px 0 48px;
+        }
+        .hero h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.02em; }
+        .hero h1 span { color: #38bdf8; }
+        .hero p { font-size: 18px; color: #dbeafe; max-width: 700px; margin-top: 12px; }
+
+        section { padding: 56px 0; }
+        .section-title { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+        .section-sub { color: #475569; font-size: 17px; margin-bottom: 32px; }
+
+        .benefit-card {
+            background: #fff;
+            padding: 32px 28px;
+            border-radius: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            border-left: 6px solid #38bdf8;
+            margin-bottom: 24px;
+            transition: 0.25s;
+        }
+        .benefit-card:hover { transform: translateX(6px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+        .benefit-card .icon { font-size: 32px; color: #1a3a5c; margin-bottom: 8px; }
+        .benefit-card h4 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+        .benefit-card p { color: #475569; font-size: 16px; }
+        .benefit-card .highlight { font-weight: 700; color: #0b1a33; background: #f1f5f9; padding: 2px 8px; border-radius: 4px; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 16px;
+        }
+        .stat-box {
+            background: #fff;
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #e9edf2;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        .stat-box .number { font-size: 36px; font-weight: 800; color: #0b1a33; }
+        .stat-box .number.green { color: #22c55e; }
+        .stat-box .label { font-size: 15px; color: #475569; margin-top: 4px; }
+
+        .market-section { padding: 48px 0; background: #f1f5f9; text-align: center; }
+        .market-items { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 24px; }
+        .market-item { background: #fff; padding: 20px 32px; border-radius: 60px; display: flex; align-items: center; gap: 16px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .market-item i { font-size: 32px; color: #1a3a5c; }
+
+        .footer { background: #0b1a33; color: #cbd5e1; padding: 28px 0; text-align: center; border-top: 4px solid #38bdf8; }
+        .footer a { color: #38bdf8; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; align-items: flex-start; }
+            .hero h1 { font-size: 28px; }
+            .section-title { font-size: 24px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .market-items { flex-direction: column; align-items: center; }
+            .market-item { width: 100%; justify-content: center; }
+        }
+        @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+    <div class="logo"><i class="fas fa-bolt"></i> BaniTwin</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="technology.html">Technology</a>
+        <a href="benefits.html" class="active">Benefits</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+    <div class="container">
+        <h1>Key <span>Benefits</span></h1>
+        <p>What our PINN‑based digital twin delivers — measurable impact for asset-intensive industries.</p>
+    </div>
+</header>
+
+<!-- ===== KEY STATS ===== -->
+<section style="padding-top: 24px;">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="number green">−80%</div>
+                <div class="label">Fewer Unplanned Outages</div>
+            </div>
+            <div class="stat-box">
+                <div class="number green">−40%</div>
+                <div class="label">Lower Maintenance Costs</div>
+            </div>
+            <div class="stat-box">
+                <div class="number green">−15‑20%</div>
+                <div class="label">Energy Consumption Reduction</div>
+            </div>
+            <div class="stat-box">
+                <div class="number green">+30%</div>
+                <div class="label">Asset Lifetime Extension</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== BENEFITS ===== -->
+<section>
+    <div class="container">
+        <h2 class="section-title">What You Gain</h2>
+        <p class="section-sub">From cost savings to sustainability — our system delivers on every front</p>
+
+        <div class="benefit-card">
+            <div class="icon"><i class="fas fa-wallet"></i></div>
+            <h4>💰 Massive Cost Savings</h4>
+            <p>Reduce maintenance spend by <span class="highlight">40%</span> by shifting from time‑based to condition‑based maintenance. No more unnecessary part replacements — only fix what's actually failing.</p>
+        </div>
+
+        <div class="benefit-card" style="border-left-color: #22c55e;">
+            <div class="icon"><i class="fas fa-bolt"></i></div>
+            <h4>⚡ Energy Efficiency</h4>
+            <p>Cut energy consumption by <span class="highlight">15‑20%</span> through real‑time process optimization. That's millions of euros saved annually — and a significant reduction in CO₂ emissions.</p>
+        </div>
+
+        <div class="benefit-card" style="border-left-color: #f59e0b;">
+            <div class="icon"><i class="fas fa-shield-alt"></i></div>
+            <h4>🛡️ Unmatched Resilience</h4>
+            <p>Predict failures <span class="highlight">weeks in advance</span> — not hours. Avoid costly outages (up to €1M per hour) and keep critical infrastructure running even during extreme conditions.</p>
+        </div>
+
+        <div class="benefit-card" style="border-left-color: #8b5cf6;">
+            <div class="icon"><i class="fas fa-chart-bar"></i></div>
+            <h4>📊 Data‑Driven Decisions</h4>
+            <p>Get clear, actionable insights from our dashboard — not raw data. Understand the <span class="highlight">root cause</span> of every alert and prioritize actions with confidence.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FINANCIAL HIGHLIGHTS ===== -->
+<section style="background:#f8fafc;">
+    <div class="container">
+        <h2 class="section-title" style="text-align:center;">Financial Impact</h2>
+        <p class="section-sub" style="text-align:center;">Real numbers from our business model</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:24px; max-width:900px; margin:0 auto;">
+            <div style="background:#fff; padding:24px; border-radius:16px; text-align:center; border:1px solid #e9edf2;">
+                <div style="font-size:28px; font-weight:800; color:#0b1a33;">€1.045M</div>
+                <div style="font-size:15px; color:#475569;">Annual Savings per Facility</div>
+            </div>
+            <div style="background:#fff; padding:24px; border-radius:16px; text-align:center; border:1px solid #e9edf2;">
+                <div style="font-size:28px; font-weight:800; color:#22c55e;">~9 months</div>
+                <div style="font-size:15px; color:#475569;">Payback Period</div>
+            </div>
+            <div style="background:#fff; padding:24px; border-radius:16px; text-align:center; border:1px solid #e9edf2;">
+                <div style="font-size:28px; font-weight:800; color:#38bdf8;">~962%</div>
+                <div style="font-size:15px; color:#475569;">ROI in 5 Years</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MARKET OPPORTUNITY ===== -->
+<section class="market-section">
+    <div class="container">
+        <h3 style="font-size:24px; font-weight:700;">Market Opportunity in Iran &amp; the Middle East</h3>
+        <div class="market-items">
+            <div class="market-item"><i class="fas fa-oil-can"></i> Petrochemicals</div>
+            <div class="market-item"><i class="fas fa-industry"></i> Refineries</div>
+            <div class="market-item"><i class="fas fa-bolt"></i> Power Plants</div>
+            <div class="market-item"><i class="fas fa-tools"></i> Steel &amp; Cement</div>
+        </div>
+        <p style="margin-top:20px; color:#334155; max-width:700px; margin-left:auto; margin-right:auto;">
+            <strong>Industry-agnostic</strong> — deployable across any sector with rotating equipment, thermal systems, and high energy consumption.
+        </p>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="container">
+        <p><i class="fas fa-bolt" style="color:#38bdf8;"></i> BaniTwin — PINN‑based Digital Twin for Energy-Intensive Industries</p>
+        <p style="font-size:14px; margin-top:4px;">© 2026 · BaniTwin · All rights reserved</p>
+        <p style="font-size:12px; opacity:0.7;">Contact: <a href="mailto:info@banitwin.com">info@banitwin.com</a></p>
+    </div>
+</footer>
+
+</body>
+</html>
