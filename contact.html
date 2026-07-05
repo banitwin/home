@@ -40,6 +40,7 @@
             background: linear-gradient(145deg, #0b1a33 0%, #1a3a5c 100%);
             color: #fff;
             padding: 120px 0 48px;
+            border-bottom: 6px solid #38bdf8;
         }
         .hero h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.02em; }
         .hero h1 span { color: #38bdf8; }
@@ -92,6 +93,14 @@
             border: 1px solid #e9edf2;
             box-shadow: 0 4px 16px rgba(0,0,0,0.05);
         }
+        .contact-form h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .contact-form h4 i {
+            color: #38bdf8;
+        }
         .contact-form label {
             display: block;
             font-weight: 600;
@@ -103,8 +112,8 @@
         .contact-form textarea {
             width: 100%;
             padding: 12px 16px;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
             font-size: 16px;
             font-family: 'Inter', sans-serif;
             transition: 0.2s;
@@ -115,25 +124,69 @@
         .contact-form textarea:focus {
             outline: none;
             border-color: #38bdf8;
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
             background: #fff;
         }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
         .contact-form .btn-submit {
-            background: #0b1a33;
-            color: #fff;
-            font-weight: 600;
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+            color: #0b1a33;
+            font-weight: 700;
             padding: 14px 32px;
             border: none;
-            border-radius: 40px;
+            border-radius: 60px;
             font-size: 16px;
             cursor: pointer;
             transition: 0.2s;
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
         }
         .contact-form .btn-submit:hover {
-            background: #38bdf8;
-            color: #0b1a33;
             transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+        }
+        .contact-form .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-status {
+            margin-top: 16px;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            display: none;
+            text-align: center;
+        }
+        .form-status.success {
+            display: block;
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+        .form-status.error {
+            display: block;
+            background: #fecaca;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+        .form-status.loading {
+            display: block;
+            background: #e0f2fe;
+            color: #075985;
+            border: 1px solid #bae6fd;
+        }
+        .form-status.show {
+            display: block;
         }
 
         .cta-section {
@@ -141,11 +194,54 @@
             padding: 48px 0;
             text-align: center;
             margin-top: 24px;
+            border-top: 1px solid #e9edf2;
+            border-bottom: 1px solid #e9edf2;
         }
         .cta-section h3 { font-size: 24px; font-weight: 700; }
         .cta-section p { color: #334155; max-width: 600px; margin: 8px auto 16px; }
+        .cta-section .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .cta-section .btn {
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-section .btn-primary {
+            background: #0b1a33;
+            color: #fff;
+        }
+        .cta-section .btn-primary:hover {
+            background: #1a3a5c;
+            transform: scale(1.02);
+        }
+        .cta-section .btn-secondary {
+            background: #38bdf8;
+            color: #0b1a33;
+        }
+        .cta-section .btn-secondary:hover {
+            background: #7dd3fc;
+            transform: scale(1.02);
+        }
 
-        .footer { background: #0b1a33; color: #cbd5e1; padding: 28px 0; text-align: center; border-top: 4px solid #38bdf8; }
+        .footer {
+            background: #0b1a33;
+            color: #cbd5e1;
+            padding: 28px 0;
+            text-align: center;
+            border-top: 4px solid #38bdf8;
+        }
         .footer a { color: #38bdf8; text-decoration: none; }
 
         @media (max-width: 768px) {
@@ -153,6 +249,15 @@
             .hero h1 { font-size: 28px; }
             .section-title { font-size: 24px; }
             .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
+            .cta-section .btn-group { flex-direction: column; align-items: center; }
+            .cta-section .btn { width: 100%; justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 100px 0 32px; }
+            .contact-info { padding: 24px; }
+            .contact-form { padding: 24px; }
+            .contact-form input,
+            .contact-form textarea { font-size: 14px; padding: 10px 14px; }
         }
     </style>
 </head>
@@ -222,15 +327,16 @@
                 </div>
             </div>
 
-            <!-- ===== RIGHT: Contact Form ===== -->
+            <!-- ===== RIGHT: Contact Form with EmailJS ===== -->
             <div class="contact-form">
-                <h4 style="margin-bottom:16px;"><i class="fas fa-paper-plane" style="color:#38bdf8;"></i> Send a Message</h4>
-                <form id="contactForm">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" placeholder="Your name" required />
+                <h4><i class="fas fa-paper-plane"></i> Send a Message</h4>
 
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="you@example.com" required />
+                <form id="contactForm" novalidate>
+                    <label for="from_name">Full Name</label>
+                    <input type="text" id="from_name" placeholder="Your name" required />
+
+                    <label for="from_email">Email Address</label>
+                    <input type="email" id="from_email" placeholder="you@example.com" required />
 
                     <label for="company">Company / Organization</label>
                     <input type="text" id="company" placeholder="Your company name" />
@@ -238,11 +344,12 @@
                     <label for="message">Message</label>
                     <textarea id="message" rows="4" placeholder="How can we help you?" required></textarea>
 
-                    <button type="submit" class="btn-submit">
+                    <button type="submit" class="btn-submit" id="submitBtn">
                         <i class="fas fa-paper-plane"></i> Send Message
                     </button>
+
+                    <div id="formStatus" class="form-status"></div>
                 </form>
-                <div id="formMessage" style="margin-top:12px; font-weight:500; text-align:center;"></div>
             </div>
         </div>
     </div>
@@ -253,11 +360,11 @@
     <div class="container">
         <h3>Ready to transform your operations?</h3>
         <p>Whether you're a plant manager, engineer, or investor — we're here to discuss how BaniTwin can help you achieve operational excellence.</p>
-        <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-top:16px;">
-            <a href="mailto:info@banitwin.com" class="btn" style="background:#0b1a33; color:#fff; padding:12px 32px; border-radius:40px; text-decoration:none; font-weight:600; display:inline-block; transition:0.2s;">
+        <div class="btn-group">
+            <a href="mailto:info@banitwin.com" class="btn btn-primary">
                 <i class="fas fa-envelope"></i> Email Us Directly
             </a>
-            <a href="https://linkedin.com/company/banitwin" target="_blank" class="btn" style="background:#38bdf8; color:#0b1a33; padding:12px 32px; border-radius:40px; text-decoration:none; font-weight:600; display:inline-block; transition:0.2s;">
+            <a href="https://linkedin.com/company/banitwin" target="_blank" class="btn btn-secondary">
                 <i class="fab fa-linkedin"></i> Follow on LinkedIn
             </a>
         </div>
@@ -273,51 +380,99 @@
     </div>
 </footer>
 
+<!-- ===== EMAILJS CDN ===== -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+
+<!-- ===== FORM HANDLER ===== -->
 <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const btn = this.querySelector('.btn-submit');
-        const msg = document.getElementById('formMessage');
+    (function() {
+        // ============================================================
+        //  YOUR EMAILJS CONFIGURATION
+        // ============================================================
+        const PUBLIC_KEY  = 'ibv3e8dFj5F9PQtvZ';   // <- Your Public Key
+        const SERVICE_ID  = 'service_g9ke6aj';    // <- Your Service ID
+        const TEMPLATE_ID = 'template_cpsxo6k';   // <- Your Template ID
+        // ============================================================
 
-        btn.disabled = true;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        msg.textContent = '';
-
-        const data = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            company: document.getElementById('company').value,
-            message: document.getElementById('message').value
-        };
-
-        // ===== Replace with actual form handling URL =====
-        const endpoint = 'https://banitwin-contact.safaparsco.workers.dev';
-
-        fetch(endpoint, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        })
-        .then(res => res.json())
-        .then(result => {
-            if (result.success) {
-                msg.style.color = '#22c55e';
-                msg.textContent = '✅ Message sent successfully! We\'ll get back to you soon.';
-                this.reset();
-            } else {
-                msg.style.color = '#ef4444';
-                msg.textContent = '❌ ' + (result.error || 'Something went wrong. Please try again.');
-            }
-        })
-        .catch(() => {
-            msg.style.color = '#ef4444';
-            msg.textContent = '❌ Network error. Please try again or email us directly.';
-        })
-        .finally(() => {
-            btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        // Initialize EmailJS with your Public Key
+        emailjs.init({
+            publicKey: PUBLIC_KEY,
         });
-    });
+
+        const form = document.getElementById('contactForm');
+        const statusDiv = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Helper to show status messages
+        function showStatus(message, type) {
+            statusDiv.textContent = message;
+            statusDiv.className = 'form-status show ' + type;
+        }
+
+        function hideStatus() {
+            statusDiv.className = 'form-status';
+            statusDiv.textContent = '';
+        }
+
+        // Helper to reset button state
+        function setButtonLoading(isLoading) {
+            if (isLoading) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            } else {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            }
+        }
+
+        // Handle form submission
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default page reload
+
+            // Hide any previous status
+            hideStatus();
+
+            // Get form values
+            const name = document.getElementById('from_name').value.trim();
+            const email = document.getElementById('from_email').value.trim();
+            const company = document.getElementById('company').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            // Basic validation
+            if (!name || !email || !message) {
+                showStatus('❌ Please fill in all required fields.', 'error');
+                return;
+            }
+
+            // Prepare template parameters
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                company: company || 'Not provided',
+                message: message,
+            };
+
+            // Show loading state
+            setButtonLoading(true);
+            showStatus('⏳ Sending your message...', 'loading');
+
+            // Send email via EmailJS
+            emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+                .then(function(response) {
+                    console.log('✅ Email sent successfully!', response);
+                    showStatus('✅ Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
+                    form.reset(); // Clear the form
+                    setButtonLoading(false);
+                })
+                .catch(function(error) {
+                    console.error('❌ Failed to send email:', error);
+                    showStatus('❌ Oops! Something went wrong. Please try again later, or email us directly at info@banitwin.com.', 'error');
+                    setButtonLoading(false);
+                });
+        });
+
+    })();
 </script>
 
 </body>
