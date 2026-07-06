@@ -71,8 +71,23 @@
             transition: 0.25s, background 0.3s, border-color 0.3s;
         }
         .team-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.08); }
-        .team-card .avatar { width: 100%; height: 280px; overflow: hidden; background: #f1f5f9; display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
-        .team-card .avatar .placeholder { font-size: 80px; color: #94a3b8; }
+
+        .team-card .avatar {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        .team-card .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .team-card .info { padding: 24px 28px 32px; text-align: center; }
         .team-card .info h3 { font-size: 22px; font-weight: 700; margin-bottom: 2px; }
         .team-card .info .role { color: #38bdf8; font-weight: 600; font-size: 15px; margin-bottom: 10px; }
@@ -88,7 +103,7 @@
         .footer a { color: #38bdf8; text-decoration: none; }
 
         /* ============================================
-           DARK MODE STYLES
+           DARK MODE
            ============================================ */
         body.dark-mode { background: #0f172a; color: #e2e8f0; }
         body.dark-mode .navbar { background: #0b1a33; }
@@ -102,7 +117,6 @@
         body.dark-mode .team-card .info ul li { color: #cbd5e1; border-bottom-color: #334155; }
         body.dark-mode .expertise-tag { background: #0f172a; color: #cbd5e1; }
         body.dark-mode .team-card .avatar { background: #0f172a; }
-        body.dark-mode .team-card .avatar .placeholder { color: #475569; }
         body.dark-mode div[style*="background:#f1f5f9"] { background: #1e293b !important; }
         body.dark-mode div[style*="background:#f1f5f9"] h3 { color: #f1f5f9 !important; }
         body.dark-mode div[style*="background:#f1f5f9"] p { color: #cbd5e1 !important; }
@@ -150,8 +164,11 @@
             </p>
         </div>
         <div class="team-grid">
+            <!-- ===== FARHAD KIANIFARD - CEO ===== -->
             <div class="team-card">
-                <div class="avatar"><div class="placeholder"><i class="fas fa-user-circle"></i></div></div>
+                <div class="avatar">
+                    <img src="ceo.jpg" alt="Farhad Kianifard - CEO" />
+                </div>
                 <div class="info">
                     <h3>Farhad Kianifard</h3>
                     <div class="role">Founder &amp; Lead AI Scientist</div>
@@ -169,8 +186,12 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- ===== MASOUD HASSANPOUR - CTO ===== -->
             <div class="team-card">
-                <div class="avatar"><div class="placeholder"><i class="fas fa-user-circle"></i></div></div>
+                <div class="avatar">
+                    <img src="cto.jpg" alt="Masoud Hassanpour - CTO" />
+                </div>
                 <div class="info">
                     <h3>Masoud Hassanpour</h3>
                     <div class="role">Co‑Founder &amp; Lead Data Scientist</div>
@@ -189,6 +210,7 @@
                 </div>
             </div>
         </div>
+
         <div style="margin-top:48px; background:#f1f5f9; padding:32px; border-radius:20px; text-align:center; transition: background 0.3s;">
             <h3 style="font-size:22px; font-weight:700; margin-bottom:8px;"><i class="fas fa-rocket" style="color:#38bdf8;"></i> Why This Team?</h3>
             <p style="color:#334155; max-width:700px; margin:0 auto; font-size:17px;">Two founders. One shared mission. Farhad and Masoud have already applied PINN to heavy industries, pharmaceuticals, materials science, and fiber optics. <strong>This isn't theoretical research — it's proven technology</strong> ready for its largest application yet: energy-intensive industries.</p>
