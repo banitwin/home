@@ -8,9 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="dark-mode.css" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.7; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.7; transition: background 0.3s, color 0.3s; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
         .navbar {
@@ -28,6 +29,12 @@
             width: 100%;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
         .navbar .logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
         .navbar .logo i { color: #38bdf8; margin-right: 6px; }
@@ -36,11 +43,33 @@
         .nav-links a:hover { color: #38bdf8; }
         .nav-links a.active { color: #38bdf8; border-bottom: 2px solid #38bdf8; padding-bottom: 4px; }
 
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px 10px;
+            border-radius: 30px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .theme-toggle:hover {
+            color: #38bdf8;
+            background: rgba(255,255,255,0.05);
+        }
+        .theme-toggle i { font-size: 20px; }
+        .theme-toggle .label { font-size: 13px; font-weight: 500; display: none; }
+        @media (min-width: 768px) { .theme-toggle .label { display: inline; } }
+
         .hero {
             background: linear-gradient(145deg, #0b1a33 0%, #1a3a5c 100%);
             color: #fff;
             padding: 120px 0 48px;
             border-bottom: 6px solid #38bdf8;
+            transition: background 0.3s, border-color 0.3s;
         }
         .hero h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.02em; }
         .hero h1 span { color: #38bdf8; }
@@ -52,10 +81,10 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 48px;
-            align-items: stretch; /* هم‌تراز کردن ارتفاع دو ستون */
+            align-items: stretch;
         }
 
-        /* ===== LEFT: Contact Info (New Design) ===== */
+        /* ===== LEFT: Contact Info ===== */
         .contact-info {
             background: #fff;
             padding: 40px 32px;
@@ -65,6 +94,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            transition: background 0.3s, border-color 0.3s;
         }
         .contact-info .icon-large {
             font-size: 40px;
@@ -77,6 +107,7 @@
             color: #0b1a33;
             margin-bottom: 12px;
             letter-spacing: -0.02em;
+            transition: color 0.3s;
         }
         .contact-info h2 span {
             color: #38bdf8;
@@ -87,6 +118,7 @@
             line-height: 1.8;
             margin-bottom: 24px;
             max-width: 90%;
+            transition: color 0.3s;
         }
         .contact-info .divider {
             width: 60px;
@@ -138,6 +170,7 @@
             font-size: 15px;
             font-weight: 500;
             color: #0b1a33;
+            transition: color 0.3s;
         }
         .contact-info .response-badge {
             margin-top: 20px;
@@ -151,6 +184,7 @@
             font-size: 14px;
             font-weight: 600;
             align-self: flex-start;
+            transition: background 0.3s, color 0.3s;
         }
         .contact-info .response-badge i {
             font-size: 16px;
@@ -165,12 +199,14 @@
             box-shadow: 0 4px 16px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
+            transition: background 0.3s, border-color 0.3s;
         }
         .contact-form h4 {
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 20px;
             color: #0b1a33;
+            transition: color 0.3s;
         }
         .contact-form h4 i {
             color: #38bdf8;
@@ -182,6 +218,7 @@
             margin-bottom: 4px;
             font-size: 14px;
             color: #0b1a33;
+            transition: color 0.3s;
         }
         .contact-form input,
         .contact-form textarea {
@@ -194,6 +231,8 @@
             transition: 0.2s;
             margin-bottom: 16px;
             background: #f8fafc;
+            color: #0f172a;
+            transition: background 0.3s, border-color 0.3s, color 0.3s;
         }
         .contact-form input:focus,
         .contact-form textarea:focus {
@@ -272,9 +311,19 @@
             margin-top: 24px;
             border-top: 1px solid #e9edf2;
             border-bottom: 1px solid #e9edf2;
+            transition: background 0.3s, border-color 0.3s;
         }
-        .cta-section h3 { font-size: 24px; font-weight: 700; }
-        .cta-section p { color: #334155; max-width: 600px; margin: 8px auto 16px; }
+        .cta-section h3 {
+            font-size: 24px;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        .cta-section p {
+            color: #334155;
+            max-width: 600px;
+            margin: 8px auto 16px;
+            transition: color 0.3s;
+        }
         .cta-section .btn-group {
             display: flex;
             justify-content: center;
@@ -317,8 +366,82 @@
             padding: 28px 0;
             text-align: center;
             border-top: 4px solid #38bdf8;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
         }
         .footer a { color: #38bdf8; text-decoration: none; }
+
+        /* ============================================
+           DARK MODE - مخصوص صفحه تماس
+           ============================================ */
+        body.dark-mode .contact-info {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        body.dark-mode .contact-info h2 {
+            color: #ffffff;
+        }
+        body.dark-mode .contact-info .description {
+            color: #cbd5e1;
+        }
+        body.dark-mode .contact-info .contact-methods .method {
+            background: #0f172a;
+            border-color: #334155;
+        }
+        body.dark-mode .contact-info .contact-methods .method .info .value {
+            color: #e2e8f0;
+        }
+        body.dark-mode .contact-info .response-badge {
+            background: #1a3a5c;
+            color: #7dd3fc;
+        }
+
+        body.dark-mode .contact-form {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        body.dark-mode .contact-form h4 {
+            color: #ffffff;
+        }
+        body.dark-mode .contact-form label {
+            color: #cbd5e1;
+        }
+        body.dark-mode .contact-form input,
+        body.dark-mode .contact-form textarea {
+            background: #0f172a;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        body.dark-mode .contact-form input:focus,
+        body.dark-mode .contact-form textarea:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
+            background: #1e293b;
+        }
+
+        body.dark-mode .cta-section {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        body.dark-mode .cta-section h3 {
+            color: #ffffff;
+        }
+        body.dark-mode .cta-section p {
+            color: #cbd5e1;
+        }
+        body.dark-mode .cta-section .btn-primary {
+            background: #38bdf8;
+            color: #0b1a33;
+        }
+        body.dark-mode .cta-section .btn-primary:hover {
+            background: #7dd3fc;
+        }
+        body.dark-mode .cta-section .btn-secondary {
+            background: #1a3a5c;
+            color: #f1f5f9;
+        }
+        body.dark-mode .cta-section .btn-secondary:hover {
+            background: #2a4a7c;
+        }
 
         @media (max-width: 768px) {
             .navbar { flex-direction: column; align-items: flex-start; }
@@ -338,11 +461,17 @@
         }
     </style>
 </head>
-<body>
+<body class="dark-mode">
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
-    <div class="logo"><i class="fas fa-bolt"></i> BaniTwin</div>
+    <div class="nav-left">
+        <div class="logo"><i class="fas fa-bolt"></i> BaniTwin</div>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-sun"></i>
+            <span class="label">Light</span>
+        </button>
+    </div>
     <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="technology.html">Technology</a>
@@ -364,7 +493,7 @@
 <section>
     <div class="container">
         <div class="contact-wrapper">
-            <!-- ===== LEFT: New Contact Info ===== -->
+            <!-- ===== LEFT: Contact Info ===== -->
             <div class="contact-info">
                 <div class="icon-large">
                     <i class="fas fa-comment-dots"></i>
@@ -381,6 +510,7 @@
                         <i class="fab fa-whatsapp"></i>
                         <div class="info">
                             <span class="label">WhatsApp Business</span>
+                            <span class="value">+98 937 377 6313</span>
                         </div>
                         <i class="fas fa-arrow-right" style="margin-left:auto; color:#94a3b8; font-size:14px;"></i>
                     </a>
@@ -438,6 +568,7 @@
     <div class="container">
         <p><i class="fas fa-bolt" style="color:#38bdf8;"></i> BaniTwin — PINN‑based Digital Twin for Energy-Intensive Industries</p>
         <p style="font-size:14px; margin-top:4px;">© 2026 · BaniTwin · All rights reserved</p>
+        <p style="font-size:12px; opacity:0.7;">Contact: <a href="mailto:info@banitwin.com">info@banitwin.com</a></p>
     </div>
 </footer>
 
@@ -445,16 +576,50 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 </script>
 
-<!-- ===== FORM HANDLER ===== -->
+<!-- ===== FORM HANDLER + DARK MODE ===== -->
 <script>
+    // ============================================
+    // DARK MODE TOGGLE
+    // ============================================
     (function() {
-        // ============================================================
-        //  YOUR EMAILJS CONFIGURATION
-        // ============================================================
+        const toggleBtn = document.getElementById('themeToggle');
+        if (!toggleBtn) return;
+        const icon = toggleBtn.querySelector('i');
+        const label = toggleBtn.querySelector('.label');
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.remove('dark-mode');
+            icon.className = 'fas fa-moon';
+            if (label) label.textContent = 'Dark';
+        } else {
+            document.body.classList.add('dark-mode');
+            icon.className = 'fas fa-sun';
+            if (label) label.textContent = 'Light';
+            localStorage.setItem('theme', 'dark');
+        }
+
+        toggleBtn.addEventListener('click', function() {
+            const isDark = document.body.classList.toggle('dark-mode');
+            if (isDark) {
+                icon.className = 'fas fa-sun';
+                if (label) label.textContent = 'Light';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.className = 'fas fa-moon';
+                if (label) label.textContent = 'Dark';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    })();
+
+    // ============================================
+    // EMAILJS FORM HANDLER
+    // ============================================
+    (function() {
         const PUBLIC_KEY  = 'ibv3e8dFj5F9PQtvZ';
         const SERVICE_ID  = 'service_g9ke6aj';
         const TEMPLATE_ID = 'template_cpsxo6k';
-        // ============================================================
 
         emailjs.init({
             publicKey: PUBLIC_KEY,
@@ -521,7 +686,6 @@
                     setButtonLoading(false);
                 });
         });
-
     })();
 </script>
 
