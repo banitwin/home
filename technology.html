@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="dark-mode.css" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.7; transition: background 0.3s, color 0.3s; }
@@ -28,9 +29,13 @@
             width: 100%;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: background 0.3s;
+            transition: background 0.3s, border-color 0.3s;
         }
-        .nav-left { display: flex; align-items: center; gap: 16px; }
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
         .navbar .logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
         .navbar .logo i { color: #38bdf8; margin-right: 6px; }
         .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
@@ -39,10 +44,22 @@
         .nav-links a.active { color: #38bdf8; border-bottom: 2px solid #38bdf8; padding-bottom: 4px; }
 
         .theme-toggle {
-            background: none; border: none; color: #cbd5e1; font-size: 20px; cursor: pointer;
-            padding: 4px 10px; border-radius: 30px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px;
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px 10px;
+            border-radius: 30px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        .theme-toggle:hover { color: #38bdf8; background: rgba(255,255,255,0.05); }
+        .theme-toggle:hover {
+            color: #38bdf8;
+            background: rgba(255,255,255,0.05);
+        }
         .theme-toggle i { font-size: 20px; }
         .theme-toggle .label { font-size: 13px; font-weight: 500; display: none; }
         @media (min-width: 768px) { .theme-toggle .label { display: inline; } }
@@ -71,7 +88,7 @@
         .card h4 { font-size: 19px; font-weight: 600; margin-bottom: 6px; }
         .card p { color: #475569; font-size: 15px; }
 
-        .tech-image { width: 100%; border-radius: 16px; border: 1px solid #e9edf2; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin: 8px 0 4px; }
+        .tech-image { width: 100%; border-radius: 16px; border: 1px solid #e9edf2; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin: 8px 0 4px; transition: border-color 0.3s; }
         .img-caption { font-size: 14px; color: #64748b; text-align: center; margin-top: 4px; }
 
         .compare-table {
@@ -84,40 +101,18 @@
         .compare-table .check { color: #22c55e; }
         .compare-table .cross { color: #ef4444; }
 
-        .footer { background: #0b1a33; color: #cbd5e1; padding: 28px 0; text-align: center; border-top: 4px solid #38bdf8; transition: background 0.3s, color 0.3s; }
-        .footer a { color: #38bdf8; text-decoration: none; }
+        /* ===== متن توضیحی PINN (رفع مشکل دارک مود) ===== */
+        .pinn-description {
+            font-size: 17px;
+            color: #1e293b;
+            transition: color 0.3s;
+        }
+        body.dark-mode .pinn-description {
+            color: #cbd5e1 !important;
+        }
 
-        /* ============================================
-           DARK MODE
-           ============================================ */
-        body.dark-mode { background: #0f172a; color: #e2e8f0; }
-        body.dark-mode .navbar { background: #0b1a33; }
-        body.dark-mode .hero { background: linear-gradient(145deg, #0b1a33 0%, #0f172a 100%); }
-        body.dark-mode .hero p { color: #cbd5e1; }
-        body.dark-mode .section-title { color: #f1f5f9; }
-        body.dark-mode .section-sub { color: #94a3b8; }
-        body.dark-mode .card { background: #1e293b; border-color: #334155; }
-        body.dark-mode .card p { color: #cbd5e1; }
-        body.dark-mode .card .icon { color: #7dd3fc; }
-        body.dark-mode .compare-table { background: #1e293b; }
-        body.dark-mode .compare-table th { background: #0b1a33; color: #f1f5f9; }
-        body.dark-mode .compare-table td { border-bottom-color: #334155; color: #e2e8f0; }
-        body.dark-mode .compare-table tr:last-child td { border-bottom: none; }
-        body.dark-mode .compare-table .check { color: #4ade80; }
-        body.dark-mode .compare-table .cross { color: #f87171; }
-        body.dark-mode .tech-image { border-color: #334155; }
-        body.dark-mode .img-caption { color: #94a3b8; }
-        body.dark-mode section[style*="background:#f1f5f9"] { background: #1e293b !important; }
-        body.dark-mode section[style*="background:#f1f5f9"] .section-title { color: #f1f5f9 !important; }
-        body.dark-mode section[style*="background:#f1f5f9"] .section-sub { color: #94a3b8 !important; }
-        body.dark-mode section[style*="background:#f1f5f9"] div[style*="background:#fff"] { background: #0f172a !important; border-color: #334155 !important; }
-        body.dark-mode section[style*="background:#f1f5f9"] div[style*="background:#fff"] h4 { color: #e2e8f0 !important; }
-        body.dark-mode section[style*="background:#f1f5f9"] div[style*="background:#fff"] p { color: #94a3b8 !important; }
-        body.dark-mode section[style*="background:#f8fafc"] { background: #0f172a !important; }
-        body.dark-mode section[style*="background:#f8fafc"] .section-title { color: #f1f5f9 !important; }
-        body.dark-mode section[style*="background:#f8fafc"] .section-sub { color: #94a3b8 !important; }
-        body.dark-mode .footer { background: #0b1a33; color: #94a3b8; }
-        body.dark-mode .footer a { color: #38bdf8; }
+        .footer { background: #0b1a33; color: #cbd5e1; padding: 28px 0; text-align: center; border-top: 4px solid #38bdf8; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+        .footer a { color: #38bdf8; text-decoration: none; }
 
         @media (max-width: 768px) {
             .navbar { flex-direction: column; align-items: flex-start; }
@@ -127,12 +122,15 @@
         }
     </style>
 </head>
-<body>
+<body class="dark-mode">
 
 <nav class="navbar">
     <div class="nav-left">
         <div class="logo"><i class="fas fa-bolt"></i> BaniTwin</div>
-        <button id="themeToggle" class="theme-toggle"><i class="fas fa-moon"></i><span class="label">Dark</span></button>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-sun"></i>
+            <span class="label">Light</span>
+        </button>
     </div>
     <div class="nav-links">
         <a href="index.html">Home</a>
@@ -156,10 +154,13 @@
         <p class="section-sub">A new class of neural networks that respect the laws of physics</p>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center;">
             <div>
-                <p style="font-size:17px; color:#1e293b;">Traditional AI models learn only from data — they don't understand the underlying physics. If data is noisy or scarce, they fail. <strong>PINN solves this.</strong></p>
+                <!-- ===== این تگ با کلاس جدید اصلاح شده ===== -->
+                <p class="pinn-description">
+                    Traditional AI models learn only from data — they don't understand the underlying physics. If data is noisy or scarce, they fail. <strong>PINN solves this.</strong>
+                </p>
                 <ul style="list-style:none; margin-top:16px;">
-                    <li style="padding:8px 0; border-bottom:1px solid #f1f5f9;"><i class="fas fa-check-circle" style="color:#22c55e;"></i> <strong>Physics constraints</strong> – ensures outputs never violate physical laws</li>
-                    <li style="padding:8px 0; border-bottom:1px solid #f1f5f9;"><i class="fas fa-check-circle" style="color:#22c55e;"></i> <strong>Works with limited data</strong> – ideal for legacy equipment with few sensors</li>
+                    <li style="padding:8px 0; border-bottom:1px solid #f1f5f9; transition: border-color 0.3s;"><i class="fas fa-check-circle" style="color:#22c55e;"></i> <strong>Physics constraints</strong> – ensures outputs never violate physical laws</li>
+                    <li style="padding:8px 0; border-bottom:1px solid #f1f5f9; transition: border-color 0.3s;"><i class="fas fa-check-circle" style="color:#22c55e;"></i> <strong>Works with limited data</strong> – ideal for legacy equipment with few sensors</li>
                     <li style="padding:8px 0;"><i class="fas fa-check-circle" style="color:#22c55e;"></i> <strong>Interpretable &amp; reliable</strong> – not a black box</li>
                 </ul>
             </div>
@@ -246,11 +247,19 @@
         if (!toggleBtn) return;
         const icon = toggleBtn.querySelector('i');
         const label = toggleBtn.querySelector('.label');
-        if (localStorage.getItem('theme') === 'dark') {
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.remove('dark-mode');
+            icon.className = 'fas fa-moon';
+            if (label) label.textContent = 'Dark';
+        } else {
             document.body.classList.add('dark-mode');
             icon.className = 'fas fa-sun';
             if (label) label.textContent = 'Light';
+            localStorage.setItem('theme', 'dark');
         }
+
         toggleBtn.addEventListener('click', function() {
             const isDark = document.body.classList.toggle('dark-mode');
             if (isDark) {
