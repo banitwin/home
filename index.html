@@ -233,6 +233,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+            transition: box-shadow 0.3s;
         }
         .swiper-slide img {
             width: 100%;
@@ -243,6 +244,7 @@
             color: #fff;
             padding: 16px 24px;
             text-align: center;
+            transition: background 0.3s, color 0.3s;
         }
         .swiper-slide .slide-caption h4 {
             margin: 0;
@@ -277,15 +279,15 @@
         }
     </style>
 </head>
-<body>
+<body class="dark-mode">
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
     <div class="nav-left">
         <div class="logo"><i class="fas fa-bolt"></i> BaniTwin</div>
         <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-            <i class="fas fa-moon"></i>
-            <span class="label">Dark</span>
+            <i class="fas fa-sun"></i>
+            <span class="label">Light</span>
         </button>
     </div>
     <div class="nav-links">
@@ -455,7 +457,7 @@
             <div class="market-item"><i class="fas fa-bolt"></i> Power Plants</div>
             <div class="market-item"><i class="fas fa-industry"></i> Steel &amp; Cement</div>
         </div>
-        <p style="margin-top:20px; color:#334155; max-width:700px; margin-left:auto; margin-right:auto;">
+        <p style="margin-top:20px; max-width:700px; margin-left:auto; margin-right:auto; color:#334155;">
             This is an <strong>industry-agnostic</strong> solution — deployable across any sector with rotating equipment, thermal systems, and high energy consumption.
         </p>
     </div>
@@ -540,7 +542,7 @@
     });
 
     // ============================================
-    // DARK MODE TOGGLE
+    // DARK MODE TOGGLE (با حالت پیش‌فرض دارک)
     // ============================================
     (function() {
         const toggleBtn = document.getElementById('themeToggle');
@@ -548,10 +550,18 @@
         const icon = toggleBtn.querySelector('i');
         const label = toggleBtn.querySelector('.label');
 
-        if (localStorage.getItem('theme') === 'dark') {
+        // بررسی localStorage - اگر مقداری ذخیره نشده، دارک پیش‌فرض است
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.remove('dark-mode');
+            icon.className = 'fas fa-moon';
+            if (label) label.textContent = 'Dark';
+        } else {
+            // پیش‌فرض: دارک
             document.body.classList.add('dark-mode');
             icon.className = 'fas fa-sun';
             if (label) label.textContent = 'Light';
+            localStorage.setItem('theme', 'dark');
         }
 
         toggleBtn.addEventListener('click', function() {
