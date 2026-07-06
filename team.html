@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Team – BaniTwin PINN Digital Twin</title>
+    <title>Contact – BaniTwin PINN Digital Twin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.7; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.7; transition: background 0.3s, color 0.3s; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
         .navbar {
@@ -28,7 +28,9 @@
             width: 100%;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: background 0.3s;
         }
+        .nav-left { display: flex; align-items: center; gap: 16px; }
         .navbar .logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
         .navbar .logo i { color: #38bdf8; margin-right: 6px; }
         .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
@@ -36,10 +38,20 @@
         .nav-links a:hover { color: #38bdf8; }
         .nav-links a.active { color: #38bdf8; border-bottom: 2px solid #38bdf8; padding-bottom: 4px; }
 
+        .theme-toggle {
+            background: none; border: none; color: #cbd5e1; font-size: 20px; cursor: pointer;
+            padding: 4px 10px; border-radius: 30px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .theme-toggle:hover { color: #38bdf8; background: rgba(255,255,255,0.05); }
+        .theme-toggle i { font-size: 20px; }
+        .theme-toggle .label { font-size: 13px; font-weight: 500; display: none; }
+        @media (min-width: 768px) { .theme-toggle .label { display: inline; } }
+
         .hero {
             background: linear-gradient(145deg, #0b1a33 0%, #1a3a5c 100%);
             color: #fff;
             padding: 120px 0 48px;
+            transition: background 0.3s;
         }
         .hero h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.02em; }
         .hero h1 span { color: #38bdf8; }
@@ -49,60 +61,154 @@
         .section-title { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
         .section-sub { color: #475569; font-size: 17px; margin-bottom: 32px; }
 
-        .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-        .team-card {
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: stretch;
+        }
+
+        .contact-info {
             background: #fff;
+            padding: 40px 32px;
             border-radius: 20px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
             border: 1px solid #e9edf2;
-            overflow: hidden;
-            transition: 0.25s;
-        }
-        .team-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.08); }
-
-        .team-card .avatar {
-            width: 100%;
-            height: 280px;
-            overflow: hidden;
-            background: #f1f5f9;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            transition: background 0.3s, border-color 0.3s;
         }
-        .team-card .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;     
-            background: #f1f5f9;
+        .contact-info .icon-large { font-size: 40px; color: #38bdf8; margin-bottom: 16px; }
+        .contact-info h2 { font-size: 26px; font-weight: 800; color: #0b1a33; margin-bottom: 12px; letter-spacing: -0.02em; }
+        .contact-info h2 span { color: #38bdf8; }
+        .contact-info .description { color: #475569; font-size: 16px; line-height: 1.8; margin-bottom: 24px; max-width: 90%; }
+        .contact-info .divider { width: 60px; height: 4px; background: linear-gradient(90deg, #38bdf8, #0ea5e9); border-radius: 4px; margin-bottom: 24px; }
+        .contact-info .contact-methods { display: flex; flex-direction: column; gap: 14px; }
+        .contact-info .contact-methods .method {
+            display: flex; align-items: center; gap: 14px; padding: 12px 16px;
+            background: #f8fafc; border-radius: 12px; border: 1px solid #f1f5f9;
+            transition: 0.2s; text-decoration: none; color: #0b1a33;
+        }
+        .contact-info .contact-methods .method:hover { background: #f1f5f9; border-color: #38bdf8; transform: translateX(4px); }
+        .contact-info .contact-methods .method i { font-size: 20px; width: 36px; text-align: center; color: #38bdf8; }
+        .contact-info .contact-methods .method .info { display: flex; flex-direction: column; }
+        .contact-info .contact-methods .method .info .label { font-size: 12px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+        .contact-info .contact-methods .method .info .value { font-size: 15px; font-weight: 500; color: #0b1a33; }
+        .contact-info .response-badge {
+            margin-top: 20px; display: inline-flex; align-items: center; gap: 10px;
+            background: #e0f2fe; color: #075985; padding: 10px 20px; border-radius: 40px;
+            font-size: 14px; font-weight: 600; align-self: flex-start;
         }
 
-        .team-card .info { padding: 24px 28px 32px; text-align: center; }
-        .team-card .info h3 { font-size: 22px; font-weight: 700; margin-bottom: 2px; }
-        .team-card .info .role { color: #38bdf8; font-weight: 600; font-size: 15px; margin-bottom: 10px; }
-        .team-card .info .bio { color: #475569; font-size: 15px; text-align: left; margin-bottom: 12px; }
-        .team-card .info .expertise-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-bottom: 12px; }
-        .expertise-tag {
-            background: #f1f5f9;
-            padding: 4px 14px;
+        .contact-form {
+            background: #fff;
+            padding: 40px 32px;
             border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            color: #1e293b;
+            border: 1px solid #e9edf2;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            transition: background 0.3s, border-color 0.3s;
         }
-        .team-card .info ul { list-style: none; text-align: left; }
-        .team-card .info ul li { padding: 4px 0; font-size: 14px; color: #334155; border-bottom: 1px solid #f8fafc; }
-        .team-card .info ul li:last-child { border-bottom: none; }
-        .team-card .info ul li i { color: #22c55e; width: 20px; margin-right: 6px; }
+        .contact-form h4 { font-size: 20px; font-weight: 700; margin-bottom: 20px; color: #0b1a33; }
+        .contact-form h4 i { color: #38bdf8; margin-right: 8px; }
+        .contact-form label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 14px; color: #0b1a33; }
+        .contact-form input, .contact-form textarea {
+            width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px;
+            font-size: 16px; font-family: 'Inter', sans-serif; transition: 0.2s; margin-bottom: 16px;
+            background: #f8fafc; transition: background 0.3s, border-color 0.3s, color 0.3s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none; border-color: #38bdf8; box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1); background: #fff;
+        }
+        .contact-form textarea { resize: vertical; min-height: 120px; }
+        .contact-form .btn-submit {
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+            color: #0b1a33; font-weight: 700; padding: 14px 32px; border: none;
+            border-radius: 60px; font-size: 16px; cursor: pointer; transition: 0.2s;
+            width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3); margin-top: auto;
+        }
+        .contact-form .btn-submit:hover { transform: scale(1.02); box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4); }
+        .contact-form .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
 
-        .footer { background: #0b1a33; color: #cbd5e1; padding: 28px 0; text-align: center; border-top: 4px solid #38bdf8; }
+        .form-status {
+            margin-top: 16px; padding: 14px 18px; border-radius: 12px;
+            font-weight: 600; font-size: 15px; display: none; text-align: center;
+        }
+        .form-status.success { display: block; background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+        .form-status.error { display: block; background: #fecaca; color: #991b1b; border: 1px solid #fca5a5; }
+        .form-status.loading { display: block; background: #e0f2fe; color: #075985; border: 1px solid #bae6fd; }
+        .form-status.show { display: block; }
+
+        .cta-section {
+            background: #f1f5f9; padding: 48px 0; text-align: center; margin-top: 24px;
+            border-top: 1px solid #e9edf2; border-bottom: 1px solid #e9edf2;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .cta-section h3 { font-size: 24px; font-weight: 700; }
+        .cta-section p { color: #334155; max-width: 600px; margin: 8px auto 16px; }
+        .cta-section .btn-group { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+        .cta-section .btn {
+            padding: 12px 32px; border-radius: 40px; text-decoration: none; font-weight: 600;
+            display: inline-flex; align-items: center; gap: 10px; transition: 0.2s; border: none; cursor: pointer;
+        }
+        .cta-section .btn-primary { background: #0b1a33; color: #fff; }
+        .cta-section .btn-primary:hover { background: #1a3a5c; transform: scale(1.02); }
+        .cta-section .btn-secondary { background: #38bdf8; color: #0b1a33; }
+        .cta-section .btn-secondary:hover { background: #7dd3fc; transform: scale(1.02); }
+
+        .footer { background: #0b1a33; color: #cbd5e1; padding: 28px 0; text-align: center; border-top: 4px solid #38bdf8; transition: background 0.3s, color 0.3s; }
         .footer a { color: #38bdf8; text-decoration: none; }
+
+        /* ============================================
+           DARK MODE
+           ============================================ */
+        body.dark-mode { background: #0f172a; color: #e2e8f0; }
+        body.dark-mode .navbar { background: #0b1a33; }
+        body.dark-mode .hero { background: linear-gradient(145deg, #0b1a33 0%, #0f172a 100%); }
+        body.dark-mode .hero p { color: #cbd5e1; }
+        body.dark-mode .contact-info { background: #1e293b; border-color: #334155; }
+        body.dark-mode .contact-info h2 { color: #f1f5f9; }
+        body.dark-mode .contact-info .description { color: #cbd5e1; }
+        body.dark-mode .contact-info .contact-methods .method { background: #0f172a; border-color: #334155; }
+        body.dark-mode .contact-info .contact-methods .method .info .value { color: #e2e8f0; }
+        body.dark-mode .contact-info .response-badge { background: #1a3a5c; color: #7dd3fc; }
+        body.dark-mode .contact-form { background: #1e293b; border-color: #334155; }
+        body.dark-mode .contact-form h4 { color: #f1f5f9; }
+        body.dark-mode .contact-form label { color: #cbd5e1; }
+        body.dark-mode .contact-form input, body.dark-mode .contact-form textarea {
+            background: #0f172a; border-color: #334155; color: #e2e8f0;
+        }
+        body.dark-mode .contact-form input:focus, body.dark-mode .contact-form textarea:focus {
+            border-color: #38bdf8; box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15); background: #1e293b;
+        }
+        body.dark-mode .cta-section { background: #1e293b; border-color: #334155; }
+        body.dark-mode .cta-section h3 { color: #f1f5f9; }
+        body.dark-mode .cta-section p { color: #cbd5e1; }
+        body.dark-mode .cta-section .btn-primary { background: #38bdf8; color: #0b1a33; }
+        body.dark-mode .cta-section .btn-primary:hover { background: #7dd3fc; }
+        body.dark-mode .cta-section .btn-secondary { background: #1a3a5c; color: #f1f5f9; }
+        body.dark-mode .cta-section .btn-secondary:hover { background: #2a4a7c; }
+        body.dark-mode .footer { background: #0b1a33; color: #94a3b8; }
+        body.dark-mode .footer a { color: #38bdf8; }
 
         @media (max-width: 768px) {
             .navbar { flex-direction: column; align-items: flex-start; }
             .hero h1 { font-size: 28px; }
             .section-title { font-size: 24px; }
-            .team-grid { grid-template-columns: 1fr; gap: 32px; }
-            .team-card .avatar { height: 200px; }
+            .contact-wrapper { grid-template-columns: 1fr; gap: 32px; align-items: stretch; }
+            .contact-info .description { max-width: 100%; }
+            .cta-section .btn-group { flex-direction: column; align-items: center; }
+            .cta-section .btn { width: 100%; justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 100px 0 32px; }
+            .contact-info { padding: 24px; }
+            .contact-form { padding: 24px; }
+            .contact-form input, .contact-form textarea { font-size: 14px; padding: 10px 14px; }
+            .contact-info .contact-methods .method .info .value { font-size: 14px; }
         }
     </style>
 </head>
@@ -110,99 +216,89 @@
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
-    <div class="logo"><i class="fas fa-bolt"></i> BaniTwin</div>
+    <div class="nav-left">
+        <div class="logo"><i class="fas fa-bolt"></i> BaniTwin</div>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+            <span class="label">Dark</span>
+        </button>
+    </div>
     <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="technology.html">Technology</a>
         <a href="benefits.html">Benefits</a>
-        <a href="team.html" class="active">Team</a>
-        <a href="contact.html">Contact</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html" class="active">Contact</a>
     </div>
 </nav>
 
 <!-- ===== HERO ===== -->
 <header class="hero">
     <div class="container">
-        <h1>Meet the <span>Team</span></h1>
-        <p>Two experts with deep, proven expertise in Physics‑Informed Neural Networks — ready to revolutionize energy-intensive industries.</p>
+        <h1>Get in <span>Touch</span></h1>
+        <p>Interested in deploying a PINN-based digital twin for your facility? Let's talk.</p>
     </div>
 </header>
 
-<!-- ===== TEAM ===== -->
+<!-- ===== CONTACT ===== -->
 <section>
     <div class="container">
-        <div style="text-align:center; margin-bottom:40px;">
-            <p style="font-size:18px; color:#334155; max-width:700px; margin:0 auto;">
-                Our team combines <strong>Industrial Engineering</strong> with <strong>Data Science</strong> — a powerful fusion of systems thinking, PINN architecture, and real‑world deployment. We've already applied PINN to heavy industries, pharmaceuticals, and advanced materials. Now we're bringing that power to energy-intensive industries.
-            </p>
-        </div>
-
-        <div class="team-grid">
-            <!-- ===== LEFT: Farhad ===== -->
-            <div class="team-card">
-                <div class="avatar">
-                    <img src="ceo.jpg" alt="Farhad Kianifard" />
+        <div class="contact-wrapper">
+            <!-- LEFT: Contact Info -->
+            <div class="contact-info">
+                <div class="icon-large"><i class="fas fa-comment-dots"></i></div>
+                <h2>Let's <span>Connect</span></h2>
+                <div class="divider"></div>
+                <p class="description">
+                    Have questions about how BaniTwin can optimize your industrial operations?
+                    We're here to help. Reach out through the form or connect with us directly on WhatsApp.
+                </p>
+                <div class="contact-methods">
+                    <a href="https://wa.me/989131142199?text=Hello!%20I%20visited%20BaniTwin%20website%20and%20I%27m%20interested%20in%20a%20consultation." target="_blank" class="method">
+                        <i class="fab fa-whatsapp"></i>
+                        <div class="info">
+                            <span class="label">WhatsApp Business</span>
+                            <span class="value">+98 913 114 2199</span>
+                        </div>
+                        <i class="fas fa-arrow-right" style="margin-left:auto; color:#94a3b8; font-size:14px;"></i>
+                    </a>
                 </div>
-                <div class="info">
-                    <h3>Farhad Kianifard</h3>
-                    <div class="role">Founder &amp; Lead AI Scientist</div>
-                    <div class="bio" style="text-align:center;">
-                        <i class="fas fa-graduation-cap" style="color:#38bdf8;"></i> Industrial Engineer · PINN Specialist
-                    </div>
-                    <div class="expertise-tags">
-                        <span class="expertise-tag"><i class="fas fa-robot"></i> PINN Architecture</span>
-                        <span class="expertise-tag"><i class="fas fa-industry"></i> Heavy Industry</span>
-                        <span class="expertise-tag"><i class="fas fa-flask"></i> R&D</span>
-                    </div>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> Designed 3 PINN‑based sustained‑release pharmaceuticals</li>
-                        <li><i class="fas fa-check-circle"></i> Formulated self‑healing super‑hydrophobic polymer</li>
-                        <li><i class="fas fa-check-circle"></i> Developed PINN‑based systems for petrochemical, power &amp; steel industries</li>
-                        <li><i class="fas fa-check-circle"></i> 8+ years in physics‑based modeling &amp; AI</li>
-                    </ul>
+                <div class="response-badge">
+                    <i class="fas fa-clock"></i> Response within 24 hours
                 </div>
             </div>
 
-            <!-- ===== RIGHT: Masoud ===== -->
-            <div class="team-card">
-                <div class="avatar">
-                    <img src="cto.jpg" alt="Masoud Hassanpour" />
-                </div>
-                <div class="info">
-                    <h3>Masoud Hassanpour</h3>
-                    <div class="role">Co‑Founder &amp; Lead Data Scientist</div>
-                    <div class="bio" style="text-align:center;">
-                        <i class="fas fa-graduation-cap" style="color:#38bdf8;"></i> PhD in Data Science · University of Surrey, UK
-                    </div>
-                    <div class="expertise-tags">
-                        <span class="expertise-tag"><i class="fas fa-database"></i> Data Science</span>
-                        <span class="expertise-tag"><i class="fas fa-network-wired"></i> PINN</span>
-                        <span class="expertise-tag"><i class="fas fa-robot"></i> Generative AI</span>
-                    </div>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> Developed PINN for non‑linear fiber optic systems (Canada)</li>
-                        <li><i class="fas fa-check-circle"></i> Designed LLM‑based systems for industrial optimization</li>
-                        <li><i class="fas fa-check-circle"></i> Published 15+ peer‑reviewed papers in top journals</li>
-                        <li><i class="fas fa-check-circle"></i> Supervised 2 BS, 3 MS, and 3 PhD students</li>
-                    </ul>
-                </div>
+            <!-- RIGHT: Contact Form with EmailJS -->
+            <div class="contact-form">
+                <h4><i class="fas fa-paper-plane"></i> Send a Message</h4>
+                <form id="contactForm" novalidate>
+                    <label for="from_name">Full Name</label>
+                    <input type="text" id="from_name" placeholder="Your name" required />
+                    <label for="from_email">Email Address</label>
+                    <input type="email" id="from_email" placeholder="you@example.com" required />
+                    <label for="company">Company / Organization</label>
+                    <input type="text" id="company" placeholder="Your company name" />
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="4" placeholder="How can we help you?" required></textarea>
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                    <div id="formStatus" class="form-status"></div>
+                </form>
             </div>
         </div>
+    </div>
+</section>
 
-        <!-- ===== WHY THIS TEAM ===== -->
-        <div style="margin-top:48px; background:#f1f5f9; padding:32px; border-radius:20px; text-align:center;">
-            <h3 style="font-size:22px; font-weight:700; margin-bottom:8px;">
-                <i class="fas fa-rocket" style="color:#38bdf8;"></i> Why This Team?
-            </h3>
-            <p style="color:#334155; max-width:700px; margin:0 auto; font-size:17px;">
-                Two founders. One shared mission. Farhad and Masoud have already applied PINN to heavy industries, pharmaceuticals, materials science, and fiber optics. <strong>This isn't theoretical research — it's proven technology</strong> ready for its largest application yet: energy-intensive industries.
-            </p>
-            <div style="display:flex; justify-content:center; gap:24px; flex-wrap:wrap; margin-top:20px;">
-                <span style="background:#fff; padding:8px 20px; border-radius:40px;"><i class="fas fa-check-circle" style="color:#22c55e;"></i> PINN Expertise</span>
-                <span style="background:#fff; padding:8px 20px; border-radius:40px;"><i class="fas fa-check-circle" style="color:#22c55e;"></i> Heavy Industry Track Record</span>
-                <span style="background:#fff; padding:8px 20px; border-radius:40px;"><i class="fas fa-check-circle" style="color:#22c55e;"></i> Cross‑Domain Innovation</span>
-                <span style="background:#fff; padding:8px 20px; border-radius:40px;"><i class="fas fa-check-circle" style="color:#22c55e;"></i> Ready to Scale</span>
-            </div>
+<!-- ===== CTA SECTION ===== -->
+<section class="cta-section">
+    <div class="container">
+        <h3>Ready to transform your operations?</h3>
+        <p>Whether you're a plant manager, engineer, or investor — we're here to discuss how BaniTwin can help you achieve operational excellence.</p>
+        <div class="btn-group">
+            <a href="https://wa.me/989131142199?text=Hello!%20I%20visited%20BaniTwin%20website%20and%20I%27m%20interested%20in%20a%20consultation." target="_blank" class="btn btn-secondary">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
         </div>
     </div>
 </section>
@@ -212,9 +308,112 @@
     <div class="container">
         <p><i class="fas fa-bolt" style="color:#38bdf8;"></i> BaniTwin — PINN‑based Digital Twin for Energy-Intensive Industries</p>
         <p style="font-size:14px; margin-top:4px;">© 2026 · BaniTwin · All rights reserved</p>
-        <p style="font-size:12px; opacity:0.7;">Contact: <a href="mailto:info@banitwin.com">info@banitwin.com</a></p>
     </div>
 </footer>
+
+<!-- ===== EMAILJS CDN ===== -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<!-- ===== FORM HANDLER + DARK MODE ===== -->
+<script>
+    // ============================================
+    // DARK MODE TOGGLE
+    // ============================================
+    (function() {
+        const toggleBtn = document.getElementById('themeToggle');
+        if (!toggleBtn) return;
+        const icon = toggleBtn.querySelector('i');
+        const label = toggleBtn.querySelector('.label');
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            icon.className = 'fas fa-sun';
+            if (label) label.textContent = 'Light';
+        }
+        toggleBtn.addEventListener('click', function() {
+            const isDark = document.body.classList.toggle('dark-mode');
+            if (isDark) {
+                icon.className = 'fas fa-sun';
+                if (label) label.textContent = 'Light';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.className = 'fas fa-moon';
+                if (label) label.textContent = 'Dark';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    })();
+
+    // ============================================
+    // EMAILJS FORM HANDLER
+    // ============================================
+    (function() {
+        const PUBLIC_KEY  = 'ibv3e8dFj5F9PQtvZ';
+        const SERVICE_ID  = 'service_g9ke6aj';
+        const TEMPLATE_ID = 'template_cpsxo6k';
+
+        emailjs.init({ publicKey: PUBLIC_KEY });
+
+        const form = document.getElementById('contactForm');
+        const statusDiv = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('submitBtn');
+
+        function showStatus(message, type) {
+            statusDiv.textContent = message;
+            statusDiv.className = 'form-status show ' + type;
+        }
+        function hideStatus() {
+            statusDiv.className = 'form-status';
+            statusDiv.textContent = '';
+        }
+        function setButtonLoading(isLoading) {
+            if (isLoading) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            } else {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            }
+        }
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            hideStatus();
+
+            const name = document.getElementById('from_name').value.trim();
+            const email = document.getElementById('from_email').value.trim();
+            const company = document.getElementById('company').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !message) {
+                showStatus('❌ Please fill in all required fields.', 'error');
+                return;
+            }
+
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                company: company || 'Not provided',
+                message: message,
+            };
+
+            setButtonLoading(true);
+            showStatus('⏳ Sending your message...', 'loading');
+
+            emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+                .then(function(response) {
+                    console.log('✅ Email sent successfully!', response);
+                    showStatus('✅ Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
+                    form.reset();
+                    setButtonLoading(false);
+                })
+                .catch(function(error) {
+                    console.error('❌ Failed to send email:', error);
+                    showStatus('❌ Oops! Something went wrong. Please try again later.', 'error');
+                    setButtonLoading(false);
+                });
+        });
+    })();
+</script>
 
 </body>
 </html>
