@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="dark-mode.css" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.7; transition: background 0.3s, color 0.3s; }
@@ -28,9 +29,13 @@
             width: 100%;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: background 0.3s;
+            transition: background 0.3s, border-color 0.3s;
         }
-        .nav-left { display: flex; align-items: center; gap: 16px; }
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
         .navbar .logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
         .navbar .logo i { color: #38bdf8; margin-right: 6px; }
         .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
@@ -39,10 +44,22 @@
         .nav-links a.active { color: #38bdf8; border-bottom: 2px solid #38bdf8; padding-bottom: 4px; }
 
         .theme-toggle {
-            background: none; border: none; color: #cbd5e1; font-size: 20px; cursor: pointer;
-            padding: 4px 10px; border-radius: 30px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px;
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px 10px;
+            border-radius: 30px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        .theme-toggle:hover { color: #38bdf8; background: rgba(255,255,255,0.05); }
+        .theme-toggle:hover {
+            color: #38bdf8;
+            background: rgba(255,255,255,0.05);
+        }
         .theme-toggle i { font-size: 20px; }
         .theme-toggle .label { font-size: 13px; font-weight: 500; display: none; }
         @media (min-width: 768px) { .theme-toggle .label { display: inline; } }
@@ -100,30 +117,28 @@
         .team-card .info ul li:last-child { border-bottom: none; }
         .team-card .info ul li i { color: #22c55e; width: 20px; margin-right: 6px; }
 
-        .footer { background: #0b1a33; color: #cbd5e1; padding: 28px 0; text-align: center; border-top: 4px solid #38bdf8; transition: background 0.3s, color 0.3s; }
-        .footer a { color: #38bdf8; text-decoration: none; }
+        /* ===== Team Introduction Paragraph ===== */
+        .team-intro {
+            font-size: 18px;
+            color: #334155;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            transition: color 0.3s;
+        }
+        body.dark-mode .team-intro {
+            color: #cbd5e1 !important;
+        }
 
-        /* ============================================
-           DARK MODE
-           ============================================ */
-        body.dark-mode { background: #0f172a; color: #e2e8f0; }
-        body.dark-mode .navbar { background: #0b1a33; }
-        body.dark-mode .hero { background: linear-gradient(145deg, #0b1a33 0%, #0f172a 100%); }
-        body.dark-mode .hero p { color: #cbd5e1; }
-        body.dark-mode .section-title { color: #f1f5f9; }
-        body.dark-mode .section-sub { color: #94a3b8; }
-        body.dark-mode .team-card { background: #1e293b; border-color: #334155; }
-        body.dark-mode .team-card .info h3 { color: #f1f5f9; }
-        body.dark-mode .team-card .info .bio { color: #cbd5e1; }
-        body.dark-mode .team-card .info ul li { color: #cbd5e1; border-bottom-color: #334155; }
-        body.dark-mode .expertise-tag { background: #0f172a; color: #cbd5e1; }
-        body.dark-mode .team-card .avatar { background: #0f172a; }
-        body.dark-mode div[style*="background:#f1f5f9"] { background: #1e293b !important; }
-        body.dark-mode div[style*="background:#f1f5f9"] h3 { color: #f1f5f9 !important; }
-        body.dark-mode div[style*="background:#f1f5f9"] p { color: #cbd5e1 !important; }
-        body.dark-mode div[style*="background:#f1f5f9"] span[style*="background:#fff"] { background: #0f172a !important; color: #e2e8f0 !important; }
-        body.dark-mode .footer { background: #0b1a33; color: #94a3b8; }
-        body.dark-mode .footer a { color: #38bdf8; }
+        .footer {
+            background: #0b1a33;
+            color: #cbd5e1;
+            padding: 28px 0;
+            text-align: center;
+            border-top: 4px solid #38bdf8;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
+        }
+        .footer a { color: #38bdf8; text-decoration: none; }
 
         @media (max-width: 768px) {
             .navbar { flex-direction: column; align-items: flex-start; }
@@ -134,12 +149,15 @@
         }
     </style>
 </head>
-<body>
+<body class="dark-mode">
 
 <nav class="navbar">
     <div class="nav-left">
         <div class="logo"><i class="fas fa-bolt"></i> BaniTwin</div>
-        <button id="themeToggle" class="theme-toggle"><i class="fas fa-moon"></i><span class="label">Dark</span></button>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-sun"></i>
+            <span class="label">Light</span>
+        </button>
     </div>
     <div class="nav-links">
         <a href="index.html">Home</a>
@@ -160,7 +178,8 @@
 <section>
     <div class="container">
         <div style="text-align:center; margin-bottom:40px;">
-            <p style="font-size:18px; color:#334155; max-width:700px; margin:0 auto;">
+            <!-- ===== پاراگراف با کلاس جدید (بدون استایل inline) ===== -->
+            <p class="team-intro">
                 Our team combines <strong>Industrial Engineering</strong> with <strong>Data Science</strong> — a powerful fusion of systems thinking, PINN architecture, and real‑world deployment. We've already applied PINN to heavy industries, pharmaceuticals, and advanced materials. Now we're bringing that power to energy-intensive industries.
             </p>
         </div>
@@ -239,11 +258,19 @@
         if (!toggleBtn) return;
         const icon = toggleBtn.querySelector('i');
         const label = toggleBtn.querySelector('.label');
-        if (localStorage.getItem('theme') === 'dark') {
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.remove('dark-mode');
+            icon.className = 'fas fa-moon';
+            if (label) label.textContent = 'Dark';
+        } else {
             document.body.classList.add('dark-mode');
             icon.className = 'fas fa-sun';
             if (label) label.textContent = 'Light';
+            localStorage.setItem('theme', 'dark');
         }
+
         toggleBtn.addEventListener('click', function() {
             const isDark = document.body.classList.toggle('dark-mode');
             if (isDark) {
