@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="dark-mode.css" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.7; transition: background 0.3s, color 0.3s; }
@@ -28,9 +29,13 @@
             width: 100%;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: background 0.3s;
+            transition: background 0.3s, border-color 0.3s;
         }
-        .nav-left { display: flex; align-items: center; gap: 16px; }
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
         .navbar .logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
         .navbar .logo i { color: #38bdf8; margin-right: 6px; }
         .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
@@ -39,10 +44,22 @@
         .nav-links a.active { color: #38bdf8; border-bottom: 2px solid #38bdf8; padding-bottom: 4px; }
 
         .theme-toggle {
-            background: none; border: none; color: #cbd5e1; font-size: 20px; cursor: pointer;
-            padding: 4px 10px; border-radius: 30px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px;
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px 10px;
+            border-radius: 30px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        .theme-toggle:hover { color: #38bdf8; background: rgba(255,255,255,0.05); }
+        .theme-toggle:hover {
+            color: #38bdf8;
+            background: rgba(255,255,255,0.05);
+        }
         .theme-toggle i { font-size: 20px; }
         .theme-toggle .label { font-size: 13px; font-weight: 500; display: none; }
         @media (min-width: 768px) { .theme-toggle .label { display: inline; } }
@@ -95,46 +112,78 @@
         .stat-box .number.green { color: #22c55e; }
         .stat-box .label { font-size: 15px; color: #475569; margin-top: 4px; }
 
-        .market-section { padding: 48px 0; background: #f1f5f9; text-align: center; transition: background 0.3s; }
-        .market-items { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 24px; }
-        .market-item { background: #fff; padding: 20px 32px; border-radius: 60px; display: flex; align-items: center; gap: 16px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: background 0.3s, color 0.3s; }
+        /* ===== Financial Impact Boxes ===== */
+        .financial-box {
+            background: #fff;
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #e9edf2;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .financial-box .number-blue {
+            font-size: 28px;
+            font-weight: 800;
+            color: #38bdf8;
+        }
+        .financial-box .number-green {
+            font-size: 28px;
+            font-weight: 800;
+            color: #22c55e;
+        }
+        .financial-box .label {
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .market-section {
+            padding: 48px 0;
+            background: #f1f5f9;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        .market-items {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .market-item {
+            background: #fff;
+            padding: 20px 32px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: background 0.3s, color 0.3s;
+        }
         .market-item i { font-size: 32px; color: #1a3a5c; }
 
-        .footer { background: #0b1a33; color: #cbd5e1; padding: 28px 0; text-align: center; border-top: 4px solid #38bdf8; transition: background 0.3s, color 0.3s; }
-        .footer a { color: #38bdf8; text-decoration: none; }
+        /* ===== Market Description Paragraph ===== */
+        .market-description {
+            margin-top: 20px;
+            color: #334155;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: color 0.3s;
+        }
+        body.dark-mode .market-description {
+            color: #cbd5e1 !important;
+        }
 
-        /* ============================================
-           DARK MODE
-           ============================================ */
-        body.dark-mode { background: #0f172a; color: #e2e8f0; }
-        body.dark-mode .navbar { background: #0b1a33; }
-        body.dark-mode .hero { background: linear-gradient(145deg, #0b1a33 0%, #0f172a 100%); }
-        body.dark-mode .hero p { color: #cbd5e1; }
-        body.dark-mode .section-title { color: #f1f5f9; }
-        body.dark-mode .section-sub { color: #94a3b8; }
-        body.dark-mode .benefit-card { background: #1e293b; border-color: #334155; }
-        body.dark-mode .benefit-card p { color: #cbd5e1; }
-        body.dark-mode .benefit-card .icon { color: #7dd3fc; }
-        body.dark-mode .benefit-card .highlight { background: #334155; color: #f1f5f9; }
-        body.dark-mode .stat-box { background: #1e293b; border-color: #334155; }
-        body.dark-mode .stat-box .number { color: #f1f5f9; }
-        body.dark-mode .stat-box .number.green { color: #4ade80; }
-        body.dark-mode .stat-box .label { color: #94a3b8; }
-        body.dark-mode .market-section { background: #1e293b; }
-        body.dark-mode .market-section h3 { color: #f1f5f9; }
-        body.dark-mode .market-section p { color: #94a3b8; }
-        body.dark-mode .market-item { background: #0f172a; color: #e2e8f0; }
-        body.dark-mode .market-item i { color: #7dd3fc; }
-        body.dark-mode section[style*="background:#f8fafc"] { background: #1e293b !important; }
-        body.dark-mode section[style*="background:#f8fafc"] .section-title { color: #f1f5f9 !important; }
-        body.dark-mode section[style*="background:#f8fafc"] .section-sub { color: #94a3b8 !important; }
-        body.dark-mode section[style*="background:#f8fafc"] .container .section-title { color: #f1f5f9; }
-        body.dark-mode section[style*="background:#f8fafc"] .container .section-sub { color: #94a3b8; }
-        body.dark-mode section[style*="background:#f8fafc"] .container div[style*="background:#fff"] { background: #0f172a !important; border-color: #334155 !important; }
-        body.dark-mode section[style*="background:#f8fafc"] .container div[style*="background:#fff"] div { color: #f1f5f9 !important; }
-        body.dark-mode section[style*="background:#f8fafc"] .container div[style*="background:#fff"] div[style*="color:#475569"] { color: #94a3b8 !important; }
-        body.dark-mode .footer { background: #0b1a33; color: #94a3b8; }
-        body.dark-mode .footer a { color: #38bdf8; }
+        .footer {
+            background: #0b1a33;
+            color: #cbd5e1;
+            padding: 28px 0;
+            text-align: center;
+            border-top: 4px solid #38bdf8;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
+        }
+        .footer a { color: #38bdf8; text-decoration: none; }
 
         @media (max-width: 768px) {
             .navbar { flex-direction: column; align-items: flex-start; }
@@ -147,12 +196,15 @@
         @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
-<body>
+<body class="dark-mode">
 
 <nav class="navbar">
     <div class="nav-left">
         <div class="logo"><i class="fas fa-bolt"></i> BaniTwin</div>
-        <button id="themeToggle" class="theme-toggle"><i class="fas fa-moon"></i><span class="label">Dark</span></button>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-sun"></i>
+            <span class="label">Light</span>
+        </button>
     </div>
     <div class="nav-links">
         <a href="index.html">Home</a>
@@ -213,17 +265,17 @@
         <h2 class="section-title" style="text-align:center;">Financial Impact</h2>
         <p class="section-sub" style="text-align:center;">Real numbers from our business model</p>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:24px; max-width:900px; margin:0 auto;">
-            <div style="background:#fff; padding:24px; border-radius:16px; text-align:center; border:1px solid #e9edf2; transition: background 0.3s, border-color 0.3s;">
-                <div style="font-size:28px; font-weight:800; color:#0b1a33;">€1.045M</div>
-                <div style="font-size:15px; color:#475569;">Annual Savings per Facility</div>
+            <div class="financial-box">
+                <div class="number-blue">€1.045M</div>
+                <div class="label">Annual Savings per Facility</div>
             </div>
-            <div style="background:#fff; padding:24px; border-radius:16px; text-align:center; border:1px solid #e9edf2; transition: background 0.3s, border-color 0.3s;">
-                <div style="font-size:28px; font-weight:800; color:#22c55e;">~9 months</div>
-                <div style="font-size:15px; color:#475569;">Payback Period</div>
+            <div class="financial-box">
+                <div class="number-green">~9 months</div>
+                <div class="label">Payback Period</div>
             </div>
-            <div style="background:#fff; padding:24px; border-radius:16px; text-align:center; border:1px solid #e9edf2; transition: background 0.3s, border-color 0.3s;">
-                <div style="font-size:28px; font-weight:800; color:#38bdf8;">~962%</div>
-                <div style="font-size:15px; color:#475569;">ROI in 5 Years</div>
+            <div class="financial-box">
+                <div class="number-blue">~962%</div>
+                <div class="label">ROI in 5 Years</div>
             </div>
         </div>
     </div>
@@ -238,7 +290,7 @@
             <div class="market-item"><i class="fas fa-bolt"></i> Power Plants</div>
             <div class="market-item"><i class="fas fa-tools"></i> Steel &amp; Cement</div>
         </div>
-        <p style="margin-top:20px; color:#334155; max-width:700px; margin-left:auto; margin-right:auto;">
+        <p class="market-description">
             <strong>Industry-agnostic</strong> — deployable across any sector with rotating equipment, thermal systems, and high energy consumption.
         </p>
     </div>
@@ -258,11 +310,19 @@
         if (!toggleBtn) return;
         const icon = toggleBtn.querySelector('i');
         const label = toggleBtn.querySelector('.label');
-        if (localStorage.getItem('theme') === 'dark') {
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.remove('dark-mode');
+            icon.className = 'fas fa-moon';
+            if (label) label.textContent = 'Dark';
+        } else {
             document.body.classList.add('dark-mode');
             icon.className = 'fas fa-sun';
             if (label) label.textContent = 'Light';
+            localStorage.setItem('theme', 'dark');
         }
+
         toggleBtn.addEventListener('click', function() {
             const isDark = document.body.classList.toggle('dark-mode');
             if (isDark) {
