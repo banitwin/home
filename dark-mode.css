@@ -60,14 +60,31 @@ body.dark-mode .hero-card h3 {
     color: #ffffff !important;
 }
 
-/* ===== SLIDESHOW SECTION (اصلاح پس‌زمینه سفید) ===== */
-body.dark-mode section[style*="padding: 40px 0; background: #f8fafc;"],
-body.dark-mode section[style*="background:#f8fafc"] {
+/* ==============================================
+   ===== SLIDESHOW SECTION (مهم) =====
+   ============================================== */
+
+/* پس‌زمینه سکشن اسلایدشو */
+body.dark-mode section[style*="padding: 40px 0; background: #f8fafc;"] {
     background: #0f172a !important;
 }
+
+/* عنوان How It Works در حالت دارک */
+body.dark-mode section[style*="padding: 40px 0; background: #f8fafc;"] .section-title {
+    color: #ffffff !important;
+}
+
+/* زیرعنوان در حالت دارک */
+body.dark-mode section[style*="padding: 40px 0; background: #f8fafc;"] .section-sub {
+    color: #94a3b8 !important;
+}
+
+/* باکس اسلایدر */
 body.dark-mode .swiper {
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4) !important;
 }
+
+/* کپشن پایین اسلایدها */
 body.dark-mode .swiper-slide .slide-caption {
     background: #0b1a33 !important;
     color: #e2e8f0 !important;
@@ -75,10 +92,14 @@ body.dark-mode .swiper-slide .slide-caption {
 body.dark-mode .swiper-slide .slide-caption h4 {
     color: #e2e8f0 !important;
 }
+
+/* دکمه‌های قبلی/بعدی */
 body.dark-mode .swiper-button-next,
 body.dark-mode .swiper-button-prev {
     color: #38bdf8 !important;
 }
+
+/* نقطه‌های پایین اسلایدر */
 body.dark-mode .swiper-pagination-bullet {
     background: #475569 !important;
 }
@@ -176,7 +197,7 @@ body.dark-mode .market-section p {
     color: #cbd5e1 !important;
 }
 
-/* ===== MARKET ITEMS (متن‌های با کیفیت بالا) ===== */
+/* ===== MARKET ITEMS ===== */
 body.dark-mode .market-item {
     background: #0f172a !important;
     color: #94a3b8 !important;
