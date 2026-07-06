@@ -2,9 +2,20 @@
    DARK MODE - BaniTwin (Global)
    ============================================ */
 
+/* ===== BODY ===== */
 body.dark-mode {
     background: #0f172a;
     color: #e2e8f0;
+}
+
+/* ===== SECTION TITLE (h2.section-title) ===== */
+body.dark-mode .section-title {
+    color: #ffffff !important;
+}
+
+/* ===== SECTION SUBTITLE (p.section-sub) ===== */
+body.dark-mode .section-sub {
+    color: #94a3b8 !important;
 }
 
 /* ===== NAVBAR ===== */
@@ -27,110 +38,41 @@ body.dark-mode .hero-stats .stat .label {
     color: #94a3b8;
 }
 body.dark-mode .hero-illustration {
-    background: rgba(255,255,255,0.04);
-    border-color: rgba(255,255,255,0.06);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.06);
 }
-body.dark-mode .hero-left .tagline {
+body.dark-mode .hero-illustration .sub {
     color: #94a3b8;
 }
 
-/* ===== PROBLEM & SOLUTION ===== */
-body.dark-mode .problem-solution {
-    background: #0f172a;
+/* ===== HERO CARD (صفحه اصلی) ===== */
+body.dark-mode .hero-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.06);
 }
-body.dark-mode .problem-solution .section-title {
-    color: #f1f5f9;
-}
-body.dark-mode .problem-solution .section-sub {
-    color: #94a3b8;
-}
-body.dark-mode .ps-card {
-    background: #1e293b;
-}
-body.dark-mode .ps-card p,
-body.dark-mode .ps-card li {
-    color: #e2e8f0;
-}
-body.dark-mode .ps-card ul li {
-    border-bottom-color: #334155;
-}
-body.dark-mode .ps-card.solution {
-    background: #1a2e2a;
-    border-left-color: #22c55e;
-}
-
-/* ===== FEATURES ===== */
-body.dark-mode .features {
-    background: #0f172a;
-}
-body.dark-mode .features .section-title {
-    color: #f1f5f9;
-}
-body.dark-mode .features .section-sub {
-    color: #94a3b8;
-}
-body.dark-mode .feature-item {
-    background: #1e293b;
-    border-color: #334155;
-}
-body.dark-mode .feature-item p {
+body.dark-mode .hero-card .benefit-list li {
     color: #cbd5e1;
 }
-body.dark-mode .feature-item .icon {
-    color: #7dd3fc;
+body.dark-mode .hero-card .benefit-list li strong {
+    color: #ffffff;
 }
-
-/* ===== CHARTS ===== */
-body.dark-mode .chart-section {
-    background: #0f172a;
-}
-body.dark-mode .chart-section .section-title {
-    color: #f1f5f9;
-}
-body.dark-mode .chart-section .section-sub {
+body.dark-mode .hero-card .notice {
     color: #94a3b8;
 }
-body.dark-mode .chart-box {
-    background: #1e293b;
-    border-color: #334155;
-}
-body.dark-mode .chart-box h4 {
-    color: #f1f5f9;
-}
-body.dark-mode .chart-box p {
-    color: #94a3b8;
-}
-body.dark-mode .chart-section div[style*="background:#f1f5f9"] {
-    background: #1e293b !important;
-}
-body.dark-mode .chart-section div[style*="background:#f1f5f9"] span {
-    color: #e2e8f0 !important;
+body.dark-mode .hero-card h3 {
+    color: #ffffff;
 }
 
-/* ===== MARKET ===== */
-body.dark-mode .market-section {
-    background: #1e293b;
+/* ===== SLIDESHOW SECTION ===== */
+body.dark-mode section[style*="background:#f8fafc"] {
+    background: #0f172a !important;
 }
-body.dark-mode .market-section h3 {
-    color: #f1f5f9;
-}
-body.dark-mode .market-section p {
-    color: #94a3b8;
-}
-body.dark-mode .market-item {
-    background: #0f172a;
-    color: #e2e8f0;
-}
-body.dark-mode .market-item i {
-    color: #7dd3fc;
-}
-
-/* ===== SWIPER ===== */
 body.dark-mode .swiper {
-    box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
 }
 body.dark-mode .swiper-slide .slide-caption {
     background: #0b1a33;
+    color: #e2e8f0;
 }
 body.dark-mode .swiper-slide .slide-caption h4 {
     color: #e2e8f0;
@@ -146,6 +88,103 @@ body.dark-mode .swiper-pagination-bullet-active {
     background: #38bdf8;
 }
 
+/* ===== PROBLEM & SOLUTION ===== */
+body.dark-mode .problem-solution {
+    background: #0f172a;
+}
+body.dark-mode .problem-solution .section-title {
+    color: #ffffff !important;
+}
+body.dark-mode .problem-solution .section-sub {
+    color: #94a3b8 !important;
+}
+body.dark-mode .ps-card {
+    background: #1e293b;
+}
+body.dark-mode .ps-card p,
+body.dark-mode .ps-card li {
+    color: #e2e8f0;
+}
+body.dark-mode .ps-card ul li {
+    border-bottom-color: #334155;
+}
+body.dark-mode .ps-card.solution {
+    background: #1a2e2a;
+    border-left-color: #22c55e;
+}
+body.dark-mode .ps-card h3 {
+    color: #ffffff;
+}
+
+/* ===== FEATURES (چهار ستون) ===== */
+body.dark-mode .features {
+    background: #0f172a;
+}
+body.dark-mode .features .section-title {
+    color: #ffffff !important;
+}
+body.dark-mode .features .section-sub {
+    color: #94a3b8 !important;
+}
+body.dark-mode .feature-item {
+    background: #1e293b;
+    border-color: #334155;
+}
+body.dark-mode .feature-item p {
+    color: #cbd5e1;
+}
+body.dark-mode .feature-item .icon {
+    color: #7dd3fc;
+}
+body.dark-mode .feature-item h4 {
+    color: #ffffff;
+}
+
+/* ===== CHARTS ===== */
+body.dark-mode .chart-section {
+    background: #0f172a;
+}
+body.dark-mode .chart-section .section-title {
+    color: #ffffff !important;
+}
+body.dark-mode .chart-section .section-sub {
+    color: #94a3b8 !important;
+}
+body.dark-mode .chart-box {
+    background: #1e293b;
+    border-color: #334155;
+}
+body.dark-mode .chart-box h4 {
+    color: #ffffff;
+}
+body.dark-mode .chart-box p {
+    color: #94a3b8;
+}
+body.dark-mode .chart-section div[style*="background:#f1f5f9"] {
+    background: #1e293b !important;
+}
+body.dark-mode .chart-section div[style*="background:#f1f5f9"] span {
+    color: #e2e8f0 !important;
+}
+
+/* ===== MARKET SECTION ===== */
+body.dark-mode .market-section {
+    background: #1e293b;
+}
+body.dark-mode .market-section h3 {
+    color: #ffffff;
+}
+body.dark-mode .market-section p {
+    color: #cbd5e1 !important;
+}
+body.dark-mode .market-item {
+    background: #0f172a;
+    color: #e2e8f0;
+}
+body.dark-mode .market-item i {
+    color: #7dd3fc;
+}
+
 /* ===== FOOTER ===== */
 body.dark-mode .footer {
     background: #0b1a33;
@@ -156,11 +195,33 @@ body.dark-mode .footer a {
 }
 
 /* ===== TECHNOLOGY PAGE ===== */
-body.dark-mode .section-title {
-    color: #f1f5f9;
+body.dark-mode section[style*="background:#f1f5f9"] {
+    background: #1e293b !important;
 }
-body.dark-mode .section-sub {
-    color: #94a3b8;
+body.dark-mode section[style*="background:#f1f5f9"] .section-title {
+    color: #ffffff !important;
+}
+body.dark-mode section[style*="background:#f1f5f9"] .section-sub {
+    color: #94a3b8 !important;
+}
+body.dark-mode section[style*="background:#f1f5f9"] div[style*="background:#fff"] {
+    background: #0f172a !important;
+    border-color: #334155 !important;
+}
+body.dark-mode section[style*="background:#f1f5f9"] div[style*="background:#fff"] h4 {
+    color: #e2e8f0 !important;
+}
+body.dark-mode section[style*="background:#f1f5f9"] div[style*="background:#fff"] p {
+    color: #94a3b8 !important;
+}
+body.dark-mode section[style*="background:#f8fafc"] {
+    background: #0f172a !important;
+}
+body.dark-mode section[style*="background:#f8fafc"] .section-title {
+    color: #ffffff !important;
+}
+body.dark-mode section[style*="background:#f8fafc"] .section-sub {
+    color: #94a3b8 !important;
 }
 body.dark-mode .card {
     background: #1e293b;
@@ -171,6 +232,9 @@ body.dark-mode .card p {
 }
 body.dark-mode .card .icon {
     color: #7dd3fc;
+}
+body.dark-mode .card h4 {
+    color: #ffffff;
 }
 body.dark-mode .compare-table {
     background: #1e293b;
@@ -198,34 +262,6 @@ body.dark-mode .tech-image {
 body.dark-mode .img-caption {
     color: #94a3b8;
 }
-body.dark-mode section[style*="background:#f1f5f9"] {
-    background: #1e293b !important;
-}
-body.dark-mode section[style*="background:#f1f5f9"] .section-title {
-    color: #f1f5f9 !important;
-}
-body.dark-mode section[style*="background:#f1f5f9"] .section-sub {
-    color: #94a3b8 !important;
-}
-body.dark-mode section[style*="background:#f1f5f9"] div[style*="background:#fff"] {
-    background: #0f172a !important;
-    border-color: #334155 !important;
-}
-body.dark-mode section[style*="background:#f1f5f9"] div[style*="background:#fff"] h4 {
-    color: #e2e8f0 !important;
-}
-body.dark-mode section[style*="background:#f1f5f9"] div[style*="background:#fff"] p {
-    color: #94a3b8 !important;
-}
-body.dark-mode section[style*="background:#f8fafc"] {
-    background: #0f172a !important;
-}
-body.dark-mode section[style*="background:#f8fafc"] .section-title {
-    color: #f1f5f9 !important;
-}
-body.dark-mode section[style*="background:#f8fafc"] .section-sub {
-    color: #94a3b8 !important;
-}
 
 /* ===== BENEFITS PAGE ===== */
 body.dark-mode .benefit-card {
@@ -241,6 +277,9 @@ body.dark-mode .benefit-card .icon {
 body.dark-mode .benefit-card .highlight {
     background: #334155;
     color: #f1f5f9;
+}
+body.dark-mode .benefit-card h4 {
+    color: #ffffff;
 }
 body.dark-mode .stat-box {
     background: #1e293b;
@@ -259,7 +298,7 @@ body.dark-mode section[style*="background:#f8fafc"] {
     background: #1e293b !important;
 }
 body.dark-mode section[style*="background:#f8fafc"] .section-title {
-    color: #f1f5f9 !important;
+    color: #ffffff !important;
 }
 body.dark-mode section[style*="background:#f8fafc"] .section-sub {
     color: #94a3b8 !important;
@@ -281,7 +320,7 @@ body.dark-mode .team-card {
     border-color: #334155;
 }
 body.dark-mode .team-card .info h3 {
-    color: #f1f5f9;
+    color: #ffffff;
 }
 body.dark-mode .team-card .info .bio {
     color: #cbd5e1;
@@ -289,6 +328,9 @@ body.dark-mode .team-card .info .bio {
 body.dark-mode .team-card .info ul li {
     color: #cbd5e1;
     border-bottom-color: #334155;
+}
+body.dark-mode .team-card .info .role {
+    color: #38bdf8;
 }
 body.dark-mode .expertise-tag {
     background: #0f172a;
@@ -301,7 +343,7 @@ body.dark-mode div[style*="background:#f1f5f9"] {
     background: #1e293b !important;
 }
 body.dark-mode div[style*="background:#f1f5f9"] h3 {
-    color: #f1f5f9 !important;
+    color: #ffffff !important;
 }
 body.dark-mode div[style*="background:#f1f5f9"] p {
     color: #cbd5e1 !important;
@@ -317,7 +359,10 @@ body.dark-mode .contact-info {
     border-color: #334155;
 }
 body.dark-mode .contact-info h2 {
-    color: #f1f5f9;
+    color: #ffffff;
+}
+body.dark-mode .contact-info h2 span {
+    color: #38bdf8;
 }
 body.dark-mode .contact-info .description {
     color: #cbd5e1;
@@ -338,7 +383,7 @@ body.dark-mode .contact-form {
     border-color: #334155;
 }
 body.dark-mode .contact-form h4 {
-    color: #f1f5f9;
+    color: #ffffff;
 }
 body.dark-mode .contact-form label {
     color: #cbd5e1;
@@ -360,7 +405,7 @@ body.dark-mode .cta-section {
     border-color: #334155;
 }
 body.dark-mode .cta-section h3 {
-    color: #f1f5f9;
+    color: #ffffff;
 }
 body.dark-mode .cta-section p {
     color: #cbd5e1;
@@ -378,19 +423,4 @@ body.dark-mode .cta-section .btn-secondary {
 }
 body.dark-mode .cta-section .btn-secondary:hover {
     background: #2a4a7c;
-}
-
-/* ===== INDEX HERO CARD ===== */
-body.dark-mode .hero-card {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(255, 255, 255, 0.06);
-}
-body.dark-mode .hero-card .benefit-list li {
-    color: #cbd5e1;
-}
-body.dark-mode .hero-card .benefit-list li strong {
-    color: #ffffff;
-}
-body.dark-mode .hero-card .notice {
-    color: #94a3b8;
 }
