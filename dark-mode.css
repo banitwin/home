@@ -8,12 +8,12 @@ body.dark-mode {
     color: #e2e8f0 !important;
 }
 
-/* ===== SECTION TITLE (h2.section-title) ===== */
+/* ===== SECTION TITLE ===== */
 body.dark-mode .section-title {
     color: #ffffff !important;
 }
 
-/* ===== SECTION SUBTITLE (p.section-sub) ===== */
+/* ===== SECTION SUBTITLE ===== */
 body.dark-mode .section-sub {
     color: #94a3b8 !important;
 }
@@ -42,7 +42,7 @@ body.dark-mode .hero-illustration {
     border-color: rgba(255, 255, 255, 0.06) !important;
 }
 
-/* ===== HERO CARD (صفحه اصلی) ===== */
+/* ===== HERO CARD ===== */
 body.dark-mode .hero-card {
     background: rgba(255, 255, 255, 0.04) !important;
     border-color: rgba(255, 255, 255, 0.06) !important;
@@ -60,31 +60,19 @@ body.dark-mode .hero-card h3 {
     color: #ffffff !important;
 }
 
-/* ==============================================
-   ===== SLIDESHOW SECTION (مهم) =====
-   ============================================== */
-
-/* پس‌زمینه سکشن اسلایدشو */
+/* ===== SLIDESHOW ===== */
 body.dark-mode section[style*="padding: 40px 0; background: #f8fafc;"] {
     background: #0f172a !important;
 }
-
-/* عنوان How It Works در حالت دارک */
 body.dark-mode section[style*="padding: 40px 0; background: #f8fafc;"] .section-title {
     color: #ffffff !important;
 }
-
-/* زیرعنوان در حالت دارک */
 body.dark-mode section[style*="padding: 40px 0; background: #f8fafc;"] .section-sub {
     color: #94a3b8 !important;
 }
-
-/* باکس اسلایدر */
 body.dark-mode .swiper {
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4) !important;
 }
-
-/* کپشن پایین اسلایدها */
 body.dark-mode .swiper-slide .slide-caption {
     background: #0b1a33 !important;
     color: #e2e8f0 !important;
@@ -92,14 +80,10 @@ body.dark-mode .swiper-slide .slide-caption {
 body.dark-mode .swiper-slide .slide-caption h4 {
     color: #e2e8f0 !important;
 }
-
-/* دکمه‌های قبلی/بعدی */
 body.dark-mode .swiper-button-next,
 body.dark-mode .swiper-button-prev {
     color: #38bdf8 !important;
 }
-
-/* نقطه‌های پایین اسلایدر */
 body.dark-mode .swiper-pagination-bullet {
     background: #475569 !important;
 }
@@ -135,7 +119,7 @@ body.dark-mode .ps-card h3 {
     color: #ffffff !important;
 }
 
-/* ===== FEATURES (چهار ستون) ===== */
+/* ===== FEATURES ===== */
 body.dark-mode .features {
     background: #0f172a !important;
 }
@@ -215,6 +199,11 @@ body.dark-mode .footer a {
     color: #38bdf8 !important;
 }
 
+/* ===== FOOTER NEW STYLES (برای لینکدین) ===== */
+body.dark-mode .linkedin-footer-link:hover {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
 /* ===== TECHNOLOGY PAGE ===== */
 body.dark-mode section[style*="background:#f1f5f9"] {
     background: #1e293b !important;
@@ -283,6 +272,12 @@ body.dark-mode .tech-image {
 body.dark-mode .img-caption {
     color: #94a3b8 !important;
 }
+body.dark-mode .pinn-description {
+    color: #cbd5e1 !important;
+}
+body.dark-mode .pinn-description strong {
+    color: #e2e8f0 !important;
+}
 
 /* ===== BENEFITS PAGE ===== */
 body.dark-mode .benefit-card {
@@ -324,14 +319,11 @@ body.dark-mode section[style*="background:#f8fafc"] .section-title {
 body.dark-mode section[style*="background:#f8fafc"] .section-sub {
     color: #94a3b8 !important;
 }
-body.dark-mode section[style*="background:#f8fafc"] .container div[style*="background:#fff"] {
-    background: #0f172a !important;
+body.dark-mode .financial-box {
+    background: #1e293b !important;
     border-color: #334155 !important;
 }
-body.dark-mode section[style*="background:#f8fafc"] .container div[style*="background:#fff"] div {
-    color: #f1f5f9 !important;
-}
-body.dark-mode section[style*="background:#f8fafc"] .container div[style*="background:#fff"] div[style*="color:#475569"] {
+body.dark-mode .financial-box .label {
     color: #94a3b8 !important;
 }
 
@@ -372,6 +364,9 @@ body.dark-mode div[style*="background:#f1f5f9"] p {
 body.dark-mode div[style*="background:#f1f5f9"] span[style*="background:#fff"] {
     background: #0f172a !important;
     color: #e2e8f0 !important;
+}
+body.dark-mode .team-intro {
+    color: #cbd5e1 !important;
 }
 
 /* ===== CONTACT PAGE ===== */
