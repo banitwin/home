@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact – BaniTwin PINN Digital Twin</title>
+    <!-- ===== FAVICON ===== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- ===== FONTS & STYLES ===== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -84,7 +91,6 @@
             align-items: stretch;
         }
 
-        /* ===== LEFT: Contact Info ===== */
         .contact-info {
             background: #fff;
             padding: 40px 32px;
@@ -190,7 +196,6 @@
             font-size: 16px;
         }
 
-        /* ===== RIGHT: Contact Form ===== */
         .contact-form {
             background: #fff;
             padding: 40px 32px;
@@ -360,19 +365,6 @@
             transform: scale(1.02);
         }
 
-        .footer {
-            background: #0b1a33;
-            color: #cbd5e1;
-            padding: 28px 0;
-            text-align: center;
-            border-top: 4px solid #38bdf8;
-            transition: background 0.3s, color 0.3s, border-color 0.3s;
-        }
-        .footer a { color: #38bdf8; text-decoration: none; }
-
-        /* ============================================
-           DARK MODE - مخصوص صفحه تماس
-           ============================================ */
         body.dark-mode .contact-info {
             background: #1e293b;
             border-color: #334155;
@@ -443,6 +435,42 @@
             background: #2a4a7c;
         }
 
+        /* ===== FOOTER STYLES ===== */
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-left {
+            text-align: left;
+        }
+        .footer-right {
+            display: flex;
+            align-items: center;
+        }
+        .linkedin-footer-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            line-height: 0;
+        }
+        .linkedin-footer-link:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            transform: scale(1.05);
+        }
+        .linkedin-footer-icon {
+            width: 32px;
+            height: 32px;
+            display: block;
+        }
+
+        .footer { background: #0b1a33; color: #cbd5e1; padding: 28px 0; text-align: center; border-top: 4px solid #38bdf8; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+        .footer a { color: #38bdf8; text-decoration: none; }
+
         @media (max-width: 768px) {
             .navbar { flex-direction: column; align-items: flex-start; }
             .hero h1 { font-size: 28px; }
@@ -450,6 +478,16 @@
             .contact-info .description { max-width: 100%; }
             .cta-section .btn-group { flex-direction: column; align-items: center; }
             .cta-section .btn { width: 100%; justify-content: center; }
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-left {
+                text-align: center;
+            }
+            .footer-right {
+                margin-top: 4px;
+            }
         }
         @media (max-width: 480px) {
             .hero { padding: 100px 0 32px; }
@@ -463,7 +501,6 @@
 </head>
 <body class="dark-mode">
 
-<!-- ===== NAVBAR ===== -->
 <nav class="navbar">
     <div class="nav-left">
         <div class="logo"><i class="fas fa-bolt"></i> BaniTwin</div>
@@ -481,7 +518,6 @@
     </div>
 </nav>
 
-<!-- ===== HERO ===== -->
 <header class="hero">
     <div class="container">
         <h1>Get in <span>Touch</span></h1>
@@ -489,11 +525,9 @@
     </div>
 </header>
 
-<!-- ===== CONTACT ===== -->
 <section>
     <div class="container">
         <div class="contact-wrapper">
-            <!-- ===== LEFT: Contact Info ===== -->
             <div class="contact-info">
                 <div class="icon-large">
                     <i class="fas fa-comment-dots"></i>
@@ -522,7 +556,6 @@
                 </div>
             </div>
 
-            <!-- ===== RIGHT: Contact Form with EmailJS ===== -->
             <div class="contact-form">
                 <h4><i class="fas fa-paper-plane"></i> Send a Message</h4>
 
@@ -550,7 +583,6 @@
     </div>
 </section>
 
-<!-- ===== CTA SECTION ===== -->
 <section class="cta-section">
     <div class="container">
         <h3>Ready to transform your operations?</h3>
@@ -565,17 +597,22 @@
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
-    <div class="container">
-        <p><i class="fas fa-bolt" style="color:#38bdf8;"></i> BaniTwin — PINN‑based Digital Twin for Energy-Intensive Industries</p>
-        <p style="font-size:14px; margin-top:4px;">© 2026 · BaniTwin · All rights reserved</p>
+    <div class="container footer-container">
+        <div class="footer-left">
+            <p><i class="fas fa-bolt" style="color:#38bdf8;"></i> BaniTwin — PINN‑based Digital Twin for Energy-Intensive Industries</p>
+            <p style="font-size:14px; margin-top:4px;">© 2026 · BaniTwin · All rights reserved</p>
+        </div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/company/banitwin/" target="_blank" rel="noopener noreferrer" class="linkedin-footer-link" aria-label="BaniTwin on LinkedIn">
+                <img src="LinkedIn_icon.svg" alt="LinkedIn" class="linkedin-footer-icon" />
+            </a>
+        </div>
     </div>
 </footer>
 
-<!-- ===== EMAILJS CDN ===== -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 </script>
 
-<!-- ===== FORM HANDLER + DARK MODE ===== -->
 <script>
     // ============================================
     // DARK MODE TOGGLE
