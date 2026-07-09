@@ -23,7 +23,6 @@
     <link rel="stylesheet" crossorigin href="./assets/index-onOgF7ap.css">
     
     <style>
-        /* Reset & Base Styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Inter', sans-serif; 
@@ -34,7 +33,6 @@
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        /* ===== NAVBAR ===== */
         .navbar {
             background: #0b1a33;
             padding: 16px 24px;
@@ -97,7 +95,6 @@
             .theme-toggle .label { display: inline; } 
         }
 
-        /* ===== HERO ===== */
         .hero {
             background: linear-gradient(145deg, #0b1a33 0%, #1a3a5c 100%);
             color: #fff;
@@ -109,7 +106,6 @@
         .hero h1 span { color: #38bdf8; }
         .hero p { font-size: 18px; color: #dbeafe; max-width: 700px; margin-top: 12px; }
 
-        /* ===== SIMULATOR WRAPPER ===== */
         .simulator-wrapper {
             background: #0f172a;
             padding: 40px 0 60px;
@@ -120,7 +116,6 @@
             width: 100%;
         }
 
-        /* ===== FOOTER ===== */
         .footer-container {
             display: flex;
             justify-content: space-between;
@@ -157,7 +152,6 @@
         }
         .footer a { color: #38bdf8; text-decoration: none; }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .navbar { flex-direction: column; align-items: flex-start; }
             .hero h1 { font-size: 28px; }
@@ -174,7 +168,6 @@
             .simulator-wrapper { padding: 20px 0 40px; }
         }
 
-        /* ===== DARK MODE OVERRIDES ===== */
         body.dark-mode .simulator-wrapper {
             background: #0f172a !important;
         }
@@ -183,14 +176,6 @@
         }
         body.dark-mode .hero p {
             color: #cbd5e1 !important;
-        }
-        
-        /* Make sure Tailwind styles work inside simulator */
-        .simulator-wrapper [class*="bg-slate-"] {
-            transition: background 0.3s;
-        }
-        .simulator-wrapper [class*="border-slate-"] {
-            transition: border-color 0.3s;
         }
     </style>
 </head>
@@ -249,9 +234,6 @@
 <script type="module" crossorigin src="./assets/index-CTfvHY56.js"></script>
 
 <script>
-    // ============================================
-    // DARK MODE TOGGLE
-    // ============================================
     (function() {
         const toggleBtn = document.getElementById('themeToggle');
         if (!toggleBtn) return;
