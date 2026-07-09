@@ -22,7 +22,9 @@
     <link rel="stylesheet" crossorigin href="./assets/index-onOgF7ap.css">
     
     <style>
-        /* ===== RESET ===== */
+        /* ============================================================
+           RESET & BASE - مطابق لوکال هاست
+           ============================================================ */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { 
             width: 100%;
@@ -31,14 +33,32 @@
             background: #0f172a;
             color: #e2e8f0;
         }
-        .container { 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 0 24px; 
-            width: 100%;
+
+        /* ============================================================
+           DARK MODE - فعال برای کل صفحه (مطابق لوکال هاست)
+           ============================================================ */
+        body {
+            background: #0f172a;
+        }
+        body.dark-mode {
+            background: #0f172a;
+        }
+        body.dark-mode .navbar {
+            background: #0b1a33;
+        }
+        body.dark-mode .hero {
+            background: linear-gradient(145deg, #0b1a33 0%, #1a3a5c 100%);
+        }
+        body.dark-mode .simulator-wrapper {
+            background: #0f172a;
+        }
+        body.dark-mode .footer {
+            background: #0b1a33;
         }
 
-        /* ===== NAVBAR ===== */
+        /* ============================================================
+           NAVBAR - بدون تغییر
+           ============================================================ */
         .navbar {
             background: #0b1a33;
             padding: 16px 24px;
@@ -114,7 +134,9 @@
             .theme-toggle .label { display: none; } 
         }
 
-        /* ===== HERO ===== */
+        /* ============================================================
+           HERO - بدون تغییر
+           ============================================================ */
         .hero {
             background: linear-gradient(145deg, #0b1a33 0%, #1a3a5c 100%);
             color: #fff;
@@ -137,18 +159,52 @@
             margin-top: 12px; 
         }
 
-        /* ===== SIMULATOR WRAPPER ===== */
+        /* ============================================================
+           CONTAINER - بدون محدودیت عرض (مطابق لوکال هاست)
+           ============================================================ */
+        .container { 
+            max-width: 100% !important;
+            margin: 0 auto; 
+            padding: 0 20px;  /* ← کاهش padding کناره‌ها به 20px (مطابق لوکال) */
+            width: 100%;
+        }
+
+        /* ============================================================
+           SIMULATOR WRAPPER - padding کاهش یافته (مطابق لوکال)
+           ============================================================ */
         .simulator-wrapper {
             width: 100%;
             min-height: 600px;
-            padding: 40px 0 60px;
+            padding: 28px 0 50px;  /* ← کاهش padding عمودی */
             background: #0f172a;
         }
         .simulator-wrapper #root {
             width: 100%;
+            padding: 0;
         }
 
-        /* ===== FOOTER ===== */
+        /* ============================================================
+           OVERRIDE TAILWIND GAPS - کاهش فاصله بین کارت‌ها (مطابق لوکال)
+           ============================================================ */
+        /* گپ‌های اصلی را به 16px (gap-4) کاهش می‌دهیم */
+        .simulator-wrapper .gap-6 {
+            gap: 1rem !important;  /* 16px به جای 24px */
+        }
+        /* گپ‌های فرعی را نیز تنظیم می‌کنیم */
+        .simulator-wrapper .gap-4 {
+            gap: 0.75rem !important;  /* 12px به جای 16px */
+        }
+        /* padding داخلی کارت‌ها را کاهش می‌دهیم */
+        .simulator-wrapper .p-5 {
+            padding: 1rem !important;  /* 16px به جای 20px */
+        }
+        .simulator-wrapper .p-6 {
+            padding: 1.25rem !important;  /* 20px به جای 24px */
+        }
+
+        /* ============================================================
+           FOOTER - بدون تغییر
+           ============================================================ */
         .footer-container {
             display: flex;
             justify-content: space-between;
@@ -185,10 +241,13 @@
         }
         .footer a { color: #38bdf8; text-decoration: none; }
 
-        /* ===== RESPONSIVE ===== */
+        /* ============================================================
+           RESPONSIVE - مطابق لوکال هاست
+           ============================================================ */
         @media (max-width: 768px) {
             .navbar { flex-direction: column; align-items: flex-start; }
             .hero h1 { font-size: 28px; }
+            .container { padding: 0 16px; }
             .footer-container {
                 flex-direction: column;
                 text-align: center;
@@ -199,7 +258,8 @@
         @media (max-width: 480px) {
             .hero { padding: 100px 0 32px; }
             .hero h1 { font-size: 24px; }
-            .simulator-wrapper { padding: 20px 0 40px; }
+            .simulator-wrapper { padding: 16px 0 40px; }
+            .container { padding: 0 12px; }
         }
     </style>
 </head>
@@ -256,15 +316,16 @@
 <script type="module" crossorigin src="./assets/index-CTfvHY56.js"></script>
 
 <script>
-    // ============================================
-    // DARK MODE TOGGLE (ذخیره در localStorage)
-    // ============================================
+    // ================================================================
+    // DARK MODE TOGGLE - فعال برای صفحه سیمولاتور (مطابق لوکال هاست)
+    // ================================================================
     (function() {
         const toggleBtn = document.getElementById('themeToggle');
         if (!toggleBtn) return;
         const icon = toggleBtn.querySelector('i');
         const label = toggleBtn.querySelector('.label');
 
+        // وضعیت اولیه: دارک‌مد فعال باشد (مطابق لوکال هاست)
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             document.body.classList.remove('dark-mode');
