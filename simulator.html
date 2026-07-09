@@ -1,6 +1,6 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Case Study – BaniTwin PINN Digital Twin</title>
@@ -174,7 +174,7 @@
             .simulator-wrapper { padding: 20px 0 40px; }
         }
 
-        /* ===== DARK MODE OVERRIDES FOR SIMULATOR ===== */
+        /* ===== DARK MODE OVERRIDES ===== */
         body.dark-mode .simulator-wrapper {
             background: #0f172a !important;
         }
@@ -183,6 +183,14 @@
         }
         body.dark-mode .hero p {
             color: #cbd5e1 !important;
+        }
+        
+        /* Make sure Tailwind styles work inside simulator */
+        .simulator-wrapper [class*="bg-slate-"] {
+            transition: background 0.3s;
+        }
+        .simulator-wrapper [class*="border-slate-"] {
+            transition: border-color 0.3s;
         }
     </style>
 </head>
